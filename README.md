@@ -1,5 +1,5 @@
 # ParasiteCommunityTrajectory
-Data and analyses used in 'History of host exposure to symbionts alters parasite community assembly'    
+Data and analyses used in 'Host exposure to symbionts and ecological drift generate divergence in parasite community assembly'    
 
 Data files included: 
 1. Outplant2019_infection.csv: longitudinal infection data for each outplant
