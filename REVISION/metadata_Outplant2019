@@ -1,0 +1,32 @@
+Metadata for 2019 Outplant datasets
+
+Variable/Header
+PLANT_ID	A number given to an individual plant based on it's  assignment to set a of randomoized inoculation treatments. The IDs are the same as the order the plants were inoculated in, which was also randomized.
+EPICHL_TRT	Describes if the plant was germinated from seed that was inoculated with Epichloe ( inoculated) or from seed that was not inoculated with Epichloe (free)
+COLLET_TRT	Describes if the plant was subjected to an inoculum of Colletotrichum spores (inoculated) or subjected to a solution of blank media inoculum, absent of colletotrichum spores (mock)
+RHIZOC_TRT	Describes if the plant was subjected to an inoculum plug of Rhizoctonia myeclia (inoculated) or subjected to a plug of blank media, absent of Rhizoctonia mycelia (mock)
+Treatment_Code	An code/nickname given to the treatments of the plant based on the epichloe, colletotrichum, or rhizoctonia inoculation
+Survey.event	13 surveys were conducted biweekly over a period of 6 weeks. This column indicates the surveys in chronological order
+Plot.Location	Refer to field map. The experimental plot contained 141 holes in which to place potted outplants. The holes are named as plot.locations according to their row and hole position. Outplants were randomly assigned a new plot location once per week (every monday)
+Treatment	A treatment code that refers to the o the inoculation treatments that a plant was subjected to. Refer to "treatments" tab
+Plant.ID	Unique ID of plant
+Tiller.ID	ID of tiller surveyed on plant. First tillers were randomly selected to be surveyed longitudinally. If the first tiller died or produced a daughter tiller, then a new tiller was assigned (ID of 2) for surveying, and so on.
+Leaf.ID	Leaf 1 is the oldest living leaf on the tiller at the start of the experiment. This is also the inoculated or mock-inoculated leaf.
+Damage	Indicates if a leaf is damaged (D), not damaged (ND), is no leaf is present (NL). If the plant is unable to be surveyed for any reason, such as death, NA's are present.
+Chew	indicates insect damage from chewing is present on leaf
+Scrape 	indicates insect or mollusk damage from scraping is present on leaf
+Mechanical 	indicates that the leaf has been mechanically damaged from handling or some other event.
+Chlorosis	Indicates that some portion of the leaf is presentinga form of  chlorosis
+Col	Indicates if Colletotrichum symptoms are observed on the leaf
+%Col	Indicates the severity of colletorichum symptoms on the leaf
+#C.lesions	Indicates the individual number of lesions that can be discerned on the leaf
+Rhiz	Indicates if Rhizoctonia symptoms are observed on the leaf
+%Rhiz	Indicates the severity of Rhizoctonia symptoms on the leaf
+#R.lesions	Indicates the individual number of lesions that can be discerned on the leaf
+Rust	Indicates if Rust symptoms are observed on the leaf
+%Rust	Indicates the severity of Rust symptoms on the leaf
+#P.lesions	Indicates the individual number of pustules that are observed on the leaf
+GLS	Indicates if Gray Leaf Spot symptoms are observed on the leaf
+%GLS	Indicates the severity of Gray Leaf Spot symptoms observed on the leaf
+#GLS.lesions	Indicates the individual number of Gray Leaf Spot lesions that can be discerned on the leaf
+Epichloe.presence	Indicates if the fungal endophyte, epichloe, was confirmed present in the tiller after the experiment ended. Epichloe was confirmed via a field tiller immunoblot purchased from Agrinostics.

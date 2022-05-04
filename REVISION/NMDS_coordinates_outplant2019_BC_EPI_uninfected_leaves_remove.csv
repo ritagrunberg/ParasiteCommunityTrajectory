@@ -1,0 +1,699 @@
+Treat,PLANT_ID,EPICHL_TRT,COLLET_TRT,RHIZOC_TRT,days,Survey.event,Treatment.code,Treat.better,NMDS1,NMDS2
+Epi (-),6,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),6,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),6,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),6,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),6,free,mock,mock,14,5,EF,No Symbiont,0.00789638,-0.00102731
+Epi (-),6,free,mock,mock,18,6,EF,No Symbiont,0.004863846,0.004075939
+Epi (-),6,free,mock,mock,21,7,EF,No Symbiont,0.011501686,-0.004324852
+Epi (-),6,free,mock,mock,25,8,EF,No Symbiont,0.008923927,-0.022394626
+Epi (-),6,free,mock,mock,28,9,EF,No Symbiont,-0.003480039,-0.025313658
+Epi (-),6,free,mock,mock,32,10,EF,No Symbiont,-0.00872909,-0.022055088
+Epi (-),6,free,mock,mock,35,11,EF,No Symbiont,-0.012728102,0.009405877
+Epi (-),6,free,mock,mock,39,12,EF,No Symbiont,-0.009332464,0.010843526
+Epi (-),6,free,mock,mock,42,13,EF,No Symbiont,-0.044963716,0.000695069
+Epi (-),22,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),22,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),22,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),22,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),22,free,mock,mock,14,5,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),22,free,mock,mock,18,6,EF,No Symbiont,0.004013594,0.028671469
+Epi (-),22,free,mock,mock,21,7,EF,No Symbiont,0.027378877,-0.007011473
+Epi (-),22,free,mock,mock,25,8,EF,No Symbiont,-0.037547109,0.289735172
+Epi (-),22,free,mock,mock,28,9,EF,No Symbiont,0.001307562,-0.046170599
+Epi (-),22,free,mock,mock,32,10,EF,No Symbiont,0.05043948,-0.042940766
+Epi (-),22,free,mock,mock,35,11,EF,No Symbiont,-0.018990791,0.006417385
+Epi (-),22,free,mock,mock,39,12,EF,No Symbiont,-0.089805182,-0.025908967
+Epi (-),22,free,mock,mock,42,13,EF,No Symbiont,-0.009332464,0.010843526
+Epi (-),25,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),25,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),25,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),25,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),25,free,mock,mock,14,5,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),25,free,mock,mock,18,6,EF,No Symbiont,0.106292015,-0.081754966
+Epi (-),27,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),27,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),27,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),27,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),27,free,mock,mock,14,5,EF,No Symbiont,0.001510999,0.008416806
+Epi (-),27,free,mock,mock,18,6,EF,No Symbiont,-0.019590532,0.000477364
+Epi (-),27,free,mock,mock,21,7,EF,No Symbiont,-0.018754371,-0.004828268
+Epi (-),27,free,mock,mock,25,8,EF,No Symbiont,-0.069930509,-0.092792388
+Epi (-),27,free,mock,mock,28,9,EF,No Symbiont,-0.087385148,-0.051627662
+Epi (-),27,free,mock,mock,32,10,EF,No Symbiont,0.088219978,-0.115484085
+Epi (-),27,free,mock,mock,35,11,EF,No Symbiont,-0.134410725,0.193999109
+Epi (-),27,free,mock,mock,39,12,EF,No Symbiont,-0.145248373,-0.061626367
+Epi (-),27,free,mock,mock,42,13,EF,No Symbiont,-0.231757675,-0.132273821
+Epi (-),35,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),35,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),35,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),35,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),35,free,mock,mock,14,5,EF,No Symbiont,0.018271505,-0.013421814
+Epi (-),35,free,mock,mock,18,6,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),35,free,mock,mock,21,7,EF,No Symbiont,0.00789638,-0.00102731
+Epi (-),35,free,mock,mock,25,8,EF,No Symbiont,0.039589438,-0.034234395
+Epi (-),35,free,mock,mock,28,9,EF,No Symbiont,0.00789638,-0.00102731
+Epi (-),35,free,mock,mock,32,10,EF,No Symbiont,0.00789638,-0.00102731
+Epi (-),35,free,mock,mock,35,11,EF,No Symbiont,0.039589438,-0.034234395
+Epi (-),35,free,mock,mock,39,12,EF,No Symbiont,0.018271505,-0.013421814
+Epi (-),35,free,mock,mock,42,13,EF,No Symbiont,0.039589438,-0.034234395
+Epi (-),59,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),59,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),59,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),59,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),59,free,mock,mock,14,5,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),59,free,mock,mock,18,6,EF,No Symbiont,0.013365435,-0.005968687
+Epi (-),59,free,mock,mock,21,7,EF,No Symbiont,0.018271505,-0.013421814
+Epi (-),59,free,mock,mock,25,8,EF,No Symbiont,0.03690785,0.015306712
+Epi (-),59,free,mock,mock,28,9,EF,No Symbiont,0.029371948,0.022944768
+Epi (-),59,free,mock,mock,32,10,EF,No Symbiont,0.010744409,-0.003219383
+Epi (-),59,free,mock,mock,35,11,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),59,free,mock,mock,39,12,EF,No Symbiont,0.001911309,0.025070298
+Epi (-),59,free,mock,mock,42,13,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,14,5,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,18,6,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,21,7,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),87,free,mock,mock,25,8,EF,No Symbiont,-0.022440122,0.006551858
+Epi (-),87,free,mock,mock,28,9,EF,No Symbiont,-0.018990791,0.006417385
+Epi (-),87,free,mock,mock,32,10,EF,No Symbiont,-0.01551374,0.008536519
+Epi (-),87,free,mock,mock,35,11,EF,No Symbiont,-0.01551374,0.008536519
+Epi (-),87,free,mock,mock,39,12,EF,No Symbiont,-0.117280589,-0.028424634
+Epi (-),87,free,mock,mock,42,13,EF,No Symbiont,-0.113357185,-0.02956675
+Epi (-),95,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),95,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),95,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),95,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),95,free,mock,mock,14,5,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),95,free,mock,mock,18,6,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),95,free,mock,mock,21,7,EF,No Symbiont,0.00789638,-0.00102731
+Epi (-),95,free,mock,mock,25,8,EF,No Symbiont,-0.016584557,-0.044015631
+Epi (-),95,free,mock,mock,28,9,EF,No Symbiont,-0.053959992,-0.002793285
+Epi (-),95,free,mock,mock,32,10,EF,No Symbiont,-0.012728102,0.009405877
+Epi (-),95,free,mock,mock,35,11,EF,No Symbiont,-0.022440122,0.006551858
+Epi (-),95,free,mock,mock,39,12,EF,No Symbiont,-0.006107475,0.012086007
+Epi (-),95,free,mock,mock,42,13,EF,No Symbiont,0.003488096,0.005895841
+Epi (-),101,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),101,free,mock,mock,4,2,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),101,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),101,free,mock,mock,11,4,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),101,free,mock,mock,14,5,EF,No Symbiont,0.005507197,0.036368587
+Epi (-),101,free,mock,mock,18,6,EF,No Symbiont,0.019943706,0.036663599
+Epi (-),101,free,mock,mock,21,7,EF,No Symbiont,0.032600941,0.028388639
+Epi (-),101,free,mock,mock,25,8,EF,No Symbiont,0.021479985,0.021712137
+Epi (-),101,free,mock,mock,28,9,EF,No Symbiont,0.080657373,-0.061847865
+Epi (-),101,free,mock,mock,32,10,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),101,free,mock,mock,35,11,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),101,free,mock,mock,39,12,EF,No Symbiont,-0.018990791,0.006417385
+Epi (-),101,free,mock,mock,42,13,EF,No Symbiont,-0.00366783,0.013307736
+Epi (-),124,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),124,free,mock,mock,4,2,EF,No Symbiont,0.000728476,0.021315817
+Epi (-),124,free,mock,mock,6,3,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),124,free,mock,mock,11,4,EF,No Symbiont,0.004013594,0.028671469
+Epi (-),124,free,mock,mock,14,5,EF,No Symbiont,0.008527478,0.030856426
+Epi (-),124,free,mock,mock,18,6,EF,No Symbiont,0.051402789,-0.016948233
+Epi (-),124,free,mock,mock,21,7,EF,No Symbiont,-0.000289908,0.000568372
+Epi (-),124,free,mock,mock,25,8,EF,No Symbiont,-0.043103024,-0.030661711
+Epi (-),124,free,mock,mock,28,9,EF,No Symbiont,-0.103262842,-0.057311387
+Epi (-),124,free,mock,mock,32,10,EF,No Symbiont,-0.127544738,-0.114484683
+Epi (-),124,free,mock,mock,35,11,EF,No Symbiont,-0.113754883,-0.202119497
+Epi (-),124,free,mock,mock,39,12,EF,No Symbiont,-0.03943045,0.001575071
+Epi (-),124,free,mock,mock,42,13,EF,No Symbiont,-0.089246529,-0.017652501
+Epi (-),133,free,mock,mock,1,1,EF,No Symbiont,-0.002578372,0.013892452
+Epi (-),133,free,mock,mock,4,2,EF,No Symbiont,0.004013594,0.028671469
+Epi (-),133,free,mock,mock,6,3,EF,No Symbiont,0.004013594,0.028671469
+Epi (-),133,free,mock,mock,11,4,EF,No Symbiont,0.006643977,0.041663128
+Epi (-),133,free,mock,mock,14,5,EF,No Symbiont,0.023553584,0.028624017
+Epi (-),133,free,mock,mock,18,6,EF,No Symbiont,-0.005108428,0.012415979
+Epi (-),133,free,mock,mock,21,7,EF,No Symbiont,-0.011839966,0.009964099
+Epi (-),133,free,mock,mock,25,8,EF,No Symbiont,-0.011839966,0.009964099
+Epi (-),133,free,mock,mock,28,9,EF,No Symbiont,-0.027655622,0.005678173
+Epi (-),133,free,mock,mock,32,10,EF,No Symbiont,-0.034508632,0.001879256
+Epi (-),133,free,mock,mock,35,11,EF,No Symbiont,-0.024054527,0.005982449
+Epi (-),133,free,mock,mock,39,12,EF,No Symbiont,-0.024054527,0.005982449
+Epi (-),133,free,mock,mock,42,13,EF,No Symbiont,-0.089246529,-0.017652501
+Epi (-) Col (+),9,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,14,5,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,18,6,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,21,7,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,25,8,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,28,9,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,32,10,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,35,11,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),9,free,inoculated,mock,39,12,EF_C,Col,-0.000436634,0.003013446
+Epi (-) Col (+),9,free,inoculated,mock,42,13,EF_C,Col,0.003488096,0.005895841
+Epi (-) Col (+),12,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),12,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),12,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),12,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),12,free,inoculated,mock,14,5,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),12,free,inoculated,mock,18,6,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),12,free,inoculated,mock,21,7,EF_C,Col,0.039589438,-0.034234395
+Epi (-) Col (+),12,free,inoculated,mock,25,8,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),12,free,inoculated,mock,28,9,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),12,free,inoculated,mock,32,10,EF_C,Col,0.039589438,-0.034234395
+Epi (-) Col (+),12,free,inoculated,mock,35,11,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),12,free,inoculated,mock,39,12,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,14,5,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,18,6,EF_C,Col,0.003488096,0.005895841
+Epi (-) Col (+),16,free,inoculated,mock,21,7,EF_C,Col,0.003488096,0.005895841
+Epi (-) Col (+),16,free,inoculated,mock,25,8,EF_C,Col,0.003488096,0.005895841
+Epi (-) Col (+),16,free,inoculated,mock,28,9,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,32,10,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,35,11,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),16,free,inoculated,mock,39,12,EF_C,Col,-0.03943045,0.001575071
+Epi (-) Col (+),16,free,inoculated,mock,42,13,EF_C,Col,-0.012728102,0.009405877
+Epi (-) Col (+),28,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),28,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),28,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),28,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),28,free,inoculated,mock,14,5,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),28,free,inoculated,mock,18,6,EF_C,Col,0.106292015,-0.081754966
+Epi (-) Col (+),28,free,inoculated,mock,21,7,EF_C,Col,0.106292015,-0.081754966
+Epi (-) Col (+),28,free,inoculated,mock,25,8,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),28,free,inoculated,mock,28,9,EF_C,Col,-0.000613974,0.01137122
+Epi (-) Col (+),28,free,inoculated,mock,32,10,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),28,free,inoculated,mock,35,11,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),28,free,inoculated,mock,39,12,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),28,free,inoculated,mock,42,13,EF_C,Col,0.039589438,-0.034234395
+Epi (-) Col (+),31,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),31,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),31,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),31,free,inoculated,mock,11,4,EF_C,Col,0.035719069,-0.029489403
+Epi (-) Col (+),31,free,inoculated,mock,14,5,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),31,free,inoculated,mock,18,6,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),31,free,inoculated,mock,21,7,EF_C,Col,0.007717983,-0.022846062
+Epi (-) Col (+),31,free,inoculated,mock,25,8,EF_C,Col,0.00420512,-0.003839248
+Epi (-) Col (+),31,free,inoculated,mock,28,9,EF_C,Col,-0.019025165,-0.044286761
+Epi (-) Col (+),31,free,inoculated,mock,32,10,EF_C,Col,-0.00568805,-0.011038928
+Epi (-) Col (+),31,free,inoculated,mock,35,11,EF_C,Col,-0.00568805,-0.011038928
+Epi (-) Col (+),31,free,inoculated,mock,39,12,EF_C,Col,-0.01350073,-0.015919719
+Epi (-) Col (+),31,free,inoculated,mock,42,13,EF_C,Col,-0.022440122,0.006551858
+Epi (-) Col (+),45,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,11,4,EF_C,Col,0.001911309,0.025070298
+Epi (-) Col (+),45,free,inoculated,mock,14,5,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,18,6,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,21,7,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,25,8,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,28,9,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,32,10,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,35,11,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),45,free,inoculated,mock,39,12,EF_C,Col,-0.078777876,-0.011768262
+Epi (-) Col (+),45,free,inoculated,mock,42,13,EF_C,Col,-0.113357185,-0.02956675
+Epi (-) Col (+),64,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,14,5,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,18,6,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,21,7,EF_C,Col,-0.022440122,0.006551858
+Epi (-) Col (+),64,free,inoculated,mock,25,8,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,28,9,EF_C,Col,-0.006107475,0.012086007
+Epi (-) Col (+),64,free,inoculated,mock,32,10,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),64,free,inoculated,mock,35,11,EF_C,Col,-0.009332464,0.010843526
+Epi (-) Col (+),64,free,inoculated,mock,39,12,EF_C,Col,-0.018990791,0.006417385
+Epi (-) Col (+),64,free,inoculated,mock,42,13,EF_C,Col,-0.03943045,0.001575071
+Epi (-) Col (+),71,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),71,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),71,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),71,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),71,free,inoculated,mock,14,5,EF_C,Col,0.003488096,0.005895841
+Epi (-) Col (+),71,free,inoculated,mock,18,6,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),71,free,inoculated,mock,21,7,EF_C,Col,0.013365435,-0.005968687
+Epi (-) Col (+),71,free,inoculated,mock,25,8,EF_C,Col,0.03390977,-0.028394894
+Epi (-) Col (+),78,free,inoculated,mock,25,8,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),78,free,inoculated,mock,28,9,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),78,free,inoculated,mock,32,10,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),78,free,inoculated,mock,35,11,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),78,free,inoculated,mock,39,12,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),78,free,inoculated,mock,42,13,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),80,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),80,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),80,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),80,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),80,free,inoculated,mock,14,5,EF_C,Col,0.011501686,-0.004324852
+Epi (-) Col (+),80,free,inoculated,mock,18,6,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),80,free,inoculated,mock,21,7,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),80,free,inoculated,mock,25,8,EF_C,Col,-0.000436634,0.003013446
+Epi (-) Col (+),80,free,inoculated,mock,28,9,EF_C,Col,-0.022440122,0.006551858
+Epi (-) Col (+),80,free,inoculated,mock,32,10,EF_C,Col,-0.002841565,-0.009439819
+Epi (-) Col (+),80,free,inoculated,mock,35,11,EF_C,Col,-0.022440122,0.006551858
+Epi (-) Col (+),80,free,inoculated,mock,39,12,EF_C,Col,-0.059903423,-0.069662468
+Epi (-) Col (+),80,free,inoculated,mock,42,13,EF_C,Col,-0.063020865,-0.006500877
+Epi (-) Col (+),102,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),102,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),102,free,inoculated,mock,6,3,EF_C,Col,0.002992664,0.031172651
+Epi (-) Col (+),110,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),110,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),110,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),110,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),110,free,inoculated,mock,14,5,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),110,free,inoculated,mock,18,6,EF_C,Col,0.117718047,-0.082032452
+Epi (-) Col (+),110,free,inoculated,mock,21,7,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),110,free,inoculated,mock,25,8,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),110,free,inoculated,mock,28,9,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),110,free,inoculated,mock,32,10,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),110,free,inoculated,mock,35,11,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),110,free,inoculated,mock,39,12,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),110,free,inoculated,mock,42,13,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,4,2,EF_C,Col,0.004013594,0.028671469
+Epi (-) Col (+),128,free,inoculated,mock,6,3,EF_C,Col,0.004013594,0.028671469
+Epi (-) Col (+),128,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,14,5,EF_C,Col,0.028447644,0.010281889
+Epi (-) Col (+),128,free,inoculated,mock,18,6,EF_C,Col,0.005507197,0.036368587
+Epi (-) Col (+),128,free,inoculated,mock,21,7,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,25,8,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,28,9,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,32,10,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,35,11,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),128,free,inoculated,mock,39,12,EF_C,Col,-0.009332464,0.010843526
+Epi (-) Col (+),128,free,inoculated,mock,42,13,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),134,free,inoculated,mock,1,1,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),134,free,inoculated,mock,4,2,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),134,free,inoculated,mock,6,3,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),134,free,inoculated,mock,11,4,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),134,free,inoculated,mock,14,5,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+),134,free,inoculated,mock,18,6,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),134,free,inoculated,mock,21,7,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),134,free,inoculated,mock,25,8,EF_C,Col,0.010744409,-0.003219383
+Epi (-) Col (+),134,free,inoculated,mock,28,9,EF_C,Col,0.028782744,-0.023859948
+Epi (-) Col (+),134,free,inoculated,mock,32,10,EF_C,Col,0.00789638,-0.00102731
+Epi (-) Col (+),134,free,inoculated,mock,35,11,EF_C,Col,0.018271505,-0.013421814
+Epi (-) Col (+),134,free,inoculated,mock,39,12,EF_C,Col,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.0056514,0.00311963
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.0056514,0.00311963
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),34,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,0.00789638,-0.00102731
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,0.005507197,0.036368587
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.00789638,-0.00102731
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,-0.000613974,0.01137122
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,0.00789638,-0.00102731
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),39,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,0.018271505,-0.013421814
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.018271505,-0.013421814
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.229801975,-0.153680919
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.099911073,-0.090305483
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.097424439,-0.095193295
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,-0.012211121,-0.003121658
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.10496972,-0.206437353
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.229317673,-0.1051872
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.006107475,0.012086007
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.03046742,-0.052905004
+Epi (-) Col (+) Rhiz (+),42,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.015400409,-0.004488815
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,0.000728476,0.021315817
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.054212257,-0.044339911
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.009292184,-0.006724226
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.00613128,-0.013221963
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.011381548,0.001134165
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.005149464,-0.003949647
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.013696626,0.00941426
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.042785528,0.001137112
+Epi (-) Col (+) Rhiz (+),44,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.10599583,-0.025171304
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.018271505,-0.013421814
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,0.072983737,-0.058737004
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,0.028782744,-0.023859948
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),51,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,0.061789275,-0.051843427
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.018271505,-0.013421814
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.061789275,-0.051843427
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.106292015,-0.081754966
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.106292015,-0.081754966
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,0.106292015,-0.081754966
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),54,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.028782744,-0.023859948
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.001510999,0.008416806
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.022888139,-0.021881111
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.011501686,-0.004324852
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.00789638,-0.00102731
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.036356451,0.003588506
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.04156833,0.001958353
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.022756362,-0.012272858
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.091724624,-0.016027404
+Epi (-) Col (+) Rhiz (+),61,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.083245721,-0.012841417
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,0.004013594,0.028671469
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,0.004013594,0.028671469
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.023518282,0.014522535
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.020376827,0.003067049
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.000728476,0.021315817
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,-0.012728102,0.009405877
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.03943045,0.001575071
+Epi (-) Col (+) Rhiz (+),69,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.10370941,-0.024281145
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,0.001911309,0.025070298
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.208189409,-0.151128398
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.416341155,-0.245958953
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,0.208188529,-0.151128191
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,0.621254485,-0.336386974
+Epi (-) Col (+) Rhiz (+),82,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.02517489,-0.019143402
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,0.039589438,-0.034234395
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.113882458,-0.083224819
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.004863846,0.004075939
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.069048131,-0.066146222
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.000289908,0.000568372
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,0.021021185,-0.039891495
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.009332464,0.010843526
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),85,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.023394864,-0.016917075
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,-0.02157894,-0.006547667
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,-0.044040571,-0.04519763
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,-0.198237527,-0.12532236
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,-0.074466689,-0.095871871
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.055747106,-0.101264
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,0.004863846,0.004075939
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.1108495,-0.025471561
+Epi (-) Col (+) Rhiz (+),100,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.651992616,-0.297464584
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,0.004013594,0.028671469
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,0.009292184,-0.006724226
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,0.023189644,-0.037286121
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.018514944,0.020668945
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,0.006879299,-0.039072329
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.024054527,0.005982449
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,-0.009332464,0.010843526
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.295692782,-0.099359183
+Epi (-) Col (+) Rhiz (+),104,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.205129884,-0.076447388
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,1,1,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,4,2,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,6,3,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,11,4,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,14,5,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,18,6,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,21,7,EF_CR,Col + Rhiz,-0.002578372,0.013892452
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,25,8,EF_CR,Col + Rhiz,0.012216471,-0.065219898
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,28,9,EF_CR,Col + Rhiz,-0.052846685,-0.034199004
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,32,10,EF_CR,Col + Rhiz,-0.015563854,-0.016442295
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,35,11,EF_CR,Col + Rhiz,0.00789638,-0.00102731
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,39,12,EF_CR,Col + Rhiz,-0.018990791,0.006417385
+Epi (-) Col (+) Rhiz (+),106,free,inoculated,inoculated,42,13,EF_CR,Col + Rhiz,-0.063020865,-0.006500877
+Epi (-) Rhiz (+),7,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),7,free,mock,inoculated,4,2,EF_R,Rhiz,0.005507197,0.036368587
+Epi (-) Rhiz (+),7,free,mock,inoculated,6,3,EF_R,Rhiz,0.005507197,0.036368587
+Epi (-) Rhiz (+),7,free,mock,inoculated,11,4,EF_R,Rhiz,0.005507197,0.036368587
+Epi (-) Rhiz (+),7,free,mock,inoculated,14,5,EF_R,Rhiz,0.007531106,0.047383352
+Epi (-) Rhiz (+),7,free,mock,inoculated,18,6,EF_R,Rhiz,0.007531106,0.047383352
+Epi (-) Rhiz (+),7,free,mock,inoculated,21,7,EF_R,Rhiz,0.005507197,0.036368587
+Epi (-) Rhiz (+),7,free,mock,inoculated,25,8,EF_R,Rhiz,0.01183324,0.057909672
+Epi (-) Rhiz (+),7,free,mock,inoculated,28,9,EF_R,Rhiz,0.09456715,0.086240025
+Epi (-) Rhiz (+),7,free,mock,inoculated,32,10,EF_R,Rhiz,0.410872448,0.603943279
+Epi (-) Rhiz (+),18,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),18,free,mock,inoculated,4,2,EF_R,Rhiz,0.016658391,0.071388193
+Epi (-) Rhiz (+),18,free,mock,inoculated,6,3,EF_R,Rhiz,0.015515617,0.075009035
+Epi (-) Rhiz (+),18,free,mock,inoculated,11,4,EF_R,Rhiz,0.009657564,0.053026943
+Epi (-) Rhiz (+),18,free,mock,inoculated,14,5,EF_R,Rhiz,0.002992664,0.031172651
+Epi (-) Rhiz (+),18,free,mock,inoculated,18,6,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),18,free,mock,inoculated,21,7,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),18,free,mock,inoculated,25,8,EF_R,Rhiz,0.003488096,0.005895841
+Epi (-) Rhiz (+),18,free,mock,inoculated,28,9,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),18,free,mock,inoculated,32,10,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),18,free,mock,inoculated,35,11,EF_R,Rhiz,-0.141728944,0.72268605
+Epi (-) Rhiz (+),18,free,mock,inoculated,39,12,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),18,free,mock,inoculated,42,13,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),30,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),30,free,mock,inoculated,4,2,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),30,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),30,free,mock,inoculated,11,4,EF_R,Rhiz,0.031729138,0.116504097
+Epi (-) Rhiz (+),30,free,mock,inoculated,14,5,EF_R,Rhiz,0.017748712,0.078251691
+Epi (-) Rhiz (+),30,free,mock,inoculated,18,6,EF_R,Rhiz,0.01183324,0.057909672
+Epi (-) Rhiz (+),30,free,mock,inoculated,21,7,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),30,free,mock,inoculated,25,8,EF_R,Rhiz,-0.034508632,0.001879256
+Epi (-) Rhiz (+),30,free,mock,inoculated,28,9,EF_R,Rhiz,-0.034508632,0.001879256
+Epi (-) Rhiz (+),30,free,mock,inoculated,32,10,EF_R,Rhiz,-0.022440122,0.006551858
+Epi (-) Rhiz (+),30,free,mock,inoculated,35,11,EF_R,Rhiz,-0.022440122,0.006551858
+Epi (-) Rhiz (+),43,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),43,free,mock,inoculated,4,2,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),43,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),43,free,mock,inoculated,11,4,EF_R,Rhiz,0.005507197,0.036368587
+Epi (-) Rhiz (+),43,free,mock,inoculated,14,5,EF_R,Rhiz,0.000728476,0.021315817
+Epi (-) Rhiz (+),43,free,mock,inoculated,18,6,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),43,free,mock,inoculated,21,7,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),43,free,mock,inoculated,25,8,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),43,free,mock,inoculated,28,9,EF_R,Rhiz,0.028782744,-0.023859948
+Epi (-) Rhiz (+),43,free,mock,inoculated,32,10,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),43,free,mock,inoculated,35,11,EF_R,Rhiz,0.028782744,-0.023859948
+Epi (-) Rhiz (+),43,free,mock,inoculated,39,12,EF_R,Rhiz,0.05043948,-0.042940766
+Epi (-) Rhiz (+),43,free,mock,inoculated,42,13,EF_R,Rhiz,-0.01551374,0.008536519
+Epi (-) Rhiz (+),50,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),50,free,mock,inoculated,4,2,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),50,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),50,free,mock,inoculated,11,4,EF_R,Rhiz,0.031729138,0.116504097
+Epi (-) Rhiz (+),50,free,mock,inoculated,14,5,EF_R,Rhiz,0.005507197,0.036368587
+Epi (-) Rhiz (+),50,free,mock,inoculated,18,6,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),50,free,mock,inoculated,21,7,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),50,free,mock,inoculated,25,8,EF_R,Rhiz,0.003488096,0.005895841
+Epi (-) Rhiz (+),50,free,mock,inoculated,28,9,EF_R,Rhiz,0.003488096,0.005895841
+Epi (-) Rhiz (+),50,free,mock,inoculated,32,10,EF_R,Rhiz,0.00789638,-0.00102731
+Epi (-) Rhiz (+),50,free,mock,inoculated,35,11,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),50,free,mock,inoculated,39,12,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),50,free,mock,inoculated,42,13,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),52,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),52,free,mock,inoculated,4,2,EF_R,Rhiz,0.013600637,0.068173976
+Epi (-) Rhiz (+),52,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),52,free,mock,inoculated,11,4,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),52,free,mock,inoculated,14,5,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),52,free,mock,inoculated,18,6,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),52,free,mock,inoculated,21,7,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),52,free,mock,inoculated,25,8,EF_R,Rhiz,-0.004287195,0.00102881
+Epi (-) Rhiz (+),52,free,mock,inoculated,28,9,EF_R,Rhiz,0.00420512,-0.003839248
+Epi (-) Rhiz (+),52,free,mock,inoculated,32,10,EF_R,Rhiz,-0.002841565,-0.009439819
+Epi (-) Rhiz (+),52,free,mock,inoculated,35,11,EF_R,Rhiz,-0.024969856,0.005319013
+Epi (-) Rhiz (+),52,free,mock,inoculated,39,12,EF_R,Rhiz,-0.071568394,-0.042822749
+Epi (-) Rhiz (+),52,free,mock,inoculated,42,13,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,4,2,EF_R,Rhiz,0.000728476,0.021315817
+Epi (-) Rhiz (+),65,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,11,4,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,14,5,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),65,free,mock,inoculated,18,6,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,21,7,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,25,8,EF_R,Rhiz,0.028782744,-0.023859948
+Epi (-) Rhiz (+),65,free,mock,inoculated,28,9,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,32,10,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,35,11,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),65,free,mock,inoculated,39,12,EF_R,Rhiz,-0.022440122,0.006551858
+Epi (-) Rhiz (+),65,free,mock,inoculated,42,13,EF_R,Rhiz,-0.009332464,0.010843526
+Epi (-) Rhiz (+),103,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),103,free,mock,inoculated,4,2,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),103,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),103,free,mock,inoculated,11,4,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),103,free,mock,inoculated,14,5,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),103,free,mock,inoculated,18,6,EF_R,Rhiz,0.001510999,0.008416806
+Epi (-) Rhiz (+),103,free,mock,inoculated,21,7,EF_R,Rhiz,0.004863846,0.004075939
+Epi (-) Rhiz (+),103,free,mock,inoculated,25,8,EF_R,Rhiz,-0.002588592,-0.002872812
+Epi (-) Rhiz (+),103,free,mock,inoculated,28,9,EF_R,Rhiz,-0.01394461,-0.023602009
+Epi (-) Rhiz (+),103,free,mock,inoculated,32,10,EF_R,Rhiz,0.037033972,-0.059909949
+Epi (-) Rhiz (+),103,free,mock,inoculated,35,11,EF_R,Rhiz,-0.01350073,-0.015919719
+Epi (-) Rhiz (+),103,free,mock,inoculated,39,12,EF_R,Rhiz,-0.111901282,-0.102185932
+Epi (-) Rhiz (+),103,free,mock,inoculated,42,13,EF_R,Rhiz,-0.051419737,-0.001839231
+Epi (-) Rhiz (+),107,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),107,free,mock,inoculated,4,2,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),107,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),107,free,mock,inoculated,11,4,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),107,free,mock,inoculated,14,5,EF_R,Rhiz,-0.064770533,-0.005190806
+Epi (-) Rhiz (+),107,free,mock,inoculated,18,6,EF_R,Rhiz,-0.029160988,-0.014900566
+Epi (-) Rhiz (+),107,free,mock,inoculated,21,7,EF_R,Rhiz,-0.090234184,-0.256211042
+Epi (-) Rhiz (+),107,free,mock,inoculated,25,8,EF_R,Rhiz,-0.21493387,-0.213782282
+Epi (-) Rhiz (+),107,free,mock,inoculated,28,9,EF_R,Rhiz,-0.249967246,-0.120076141
+Epi (-) Rhiz (+),107,free,mock,inoculated,32,10,EF_R,Rhiz,-0.056573901,-0.121193765
+Epi (-) Rhiz (+),107,free,mock,inoculated,35,11,EF_R,Rhiz,-0.034508632,0.001879256
+Epi (-) Rhiz (+),107,free,mock,inoculated,39,12,EF_R,Rhiz,-0.073094464,-0.008403376
+Epi (-) Rhiz (+),107,free,mock,inoculated,42,13,EF_R,Rhiz,-0.113357185,-0.02956675
+Epi (-) Rhiz (+),108,free,mock,inoculated,1,1,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),108,free,mock,inoculated,4,2,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),108,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),108,free,mock,inoculated,11,4,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),108,free,mock,inoculated,14,5,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),108,free,mock,inoculated,18,6,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),108,free,mock,inoculated,21,7,EF_R,Rhiz,-0.012728102,0.009405877
+Epi (-) Rhiz (+),108,free,mock,inoculated,25,8,EF_R,Rhiz,-0.012728102,0.009405877
+Epi (-) Rhiz (+),108,free,mock,inoculated,28,9,EF_R,Rhiz,0.000807301,-0.0071524
+Epi (-) Rhiz (+),108,free,mock,inoculated,32,10,EF_R,Rhiz,0.000807301,-0.0071524
+Epi (-) Rhiz (+),108,free,mock,inoculated,35,11,EF_R,Rhiz,0.003488096,0.005895841
+Epi (-) Rhiz (+),108,free,mock,inoculated,39,12,EF_R,Rhiz,-0.009332464,0.010843526
+Epi (-) Rhiz (+),108,free,mock,inoculated,42,13,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),120,free,mock,inoculated,21,7,EF_R,Rhiz,0.004863846,0.004075939
+Epi (-) Rhiz (+),120,free,mock,inoculated,25,8,EF_R,Rhiz,0.387038859,-0.223615771
+Epi (-) Rhiz (+),120,free,mock,inoculated,28,9,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),120,free,mock,inoculated,32,10,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),120,free,mock,inoculated,35,11,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),120,free,mock,inoculated,39,12,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),120,free,mock,inoculated,42,13,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),135,free,mock,inoculated,6,3,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),135,free,mock,inoculated,11,4,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),135,free,mock,inoculated,14,5,EF_R,Rhiz,-0.002578372,0.013892452
+Epi (-) Rhiz (+),135,free,mock,inoculated,18,6,EF_R,Rhiz,0.028782744,-0.023859948
+Epi (-) Rhiz (+),135,free,mock,inoculated,21,7,EF_R,Rhiz,0.05043948,-0.042940766
+Epi (-) Rhiz (+),135,free,mock,inoculated,25,8,EF_R,Rhiz,0.034335192,-0.107319966
+Epi (-) Rhiz (+),135,free,mock,inoculated,28,9,EF_R,Rhiz,0.018271505,-0.013421814
+Epi (-) Rhiz (+),135,free,mock,inoculated,32,10,EF_R,Rhiz,0.018973182,-0.080461954
+Epi (-) Rhiz (+),135,free,mock,inoculated,35,11,EF_R,Rhiz,0.005646397,-0.094851047
+Epi (-) Rhiz (+),135,free,mock,inoculated,39,12,EF_R,Rhiz,-0.018990791,0.006417385
+Epi (-) Rhiz (+),135,free,mock,inoculated,42,13,EF_R,Rhiz,-0.051419737,-0.001839231
+Epi (+),1,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),1,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),1,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),1,inoculated,mock,mock,11,4,EI,Epi,-0.002578372,0.013892452
+Epi (+),1,inoculated,mock,mock,14,5,EI,Epi,-0.002578372,0.013892452
+Epi (+),1,inoculated,mock,mock,18,6,EI,Epi,0.013403861,0.011359189
+Epi (+),1,inoculated,mock,mock,21,7,EI,Epi,0.041291928,0.078203207
+Epi (+),1,inoculated,mock,mock,25,8,EI,Epi,0.020376827,0.003067049
+Epi (+),1,inoculated,mock,mock,28,9,EI,Epi,-0.002578372,0.013892452
+Epi (+),1,inoculated,mock,mock,32,10,EI,Epi,-0.002578372,0.013892452
+Epi (+),1,inoculated,mock,mock,35,11,EI,Epi,-0.006107475,0.012086007
+Epi (+),1,inoculated,mock,mock,39,12,EI,Epi,-0.009364428,-0.001380959
+Epi (+),1,inoculated,mock,mock,42,13,EI,Epi,-0.012763219,-0.040291909
+Epi (+),38,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),38,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),38,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),38,inoculated,mock,mock,11,4,EI,Epi,0.01183324,0.057909672
+Epi (+),38,inoculated,mock,mock,14,5,EI,Epi,0.016658391,0.071388193
+Epi (+),38,inoculated,mock,mock,18,6,EI,Epi,0.025625505,0.104820978
+Epi (+),38,inoculated,mock,mock,21,7,EI,Epi,0.008922417,0.007618104
+Epi (+),38,inoculated,mock,mock,25,8,EI,Epi,0.013365435,-0.005968687
+Epi (+),38,inoculated,mock,mock,28,9,EI,Epi,0.03390977,-0.028394894
+Epi (+),38,inoculated,mock,mock,32,10,EI,Epi,0.084460142,-0.066930296
+Epi (+),38,inoculated,mock,mock,35,11,EI,Epi,-0.002578372,0.013892452
+Epi (+),38,inoculated,mock,mock,39,12,EI,Epi,0.018271505,-0.013421814
+Epi (+),38,inoculated,mock,mock,42,13,EI,Epi,0.018271505,-0.013421814
+Epi (+),53,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),53,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),53,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),53,inoculated,mock,mock,11,4,EI,Epi,-0.002578372,0.013892452
+Epi (+),53,inoculated,mock,mock,14,5,EI,Epi,0.00789638,-0.00102731
+Epi (+),53,inoculated,mock,mock,18,6,EI,Epi,-0.002578372,0.013892452
+Epi (+),53,inoculated,mock,mock,21,7,EI,Epi,0.208187217,-0.151127337
+Epi (+),53,inoculated,mock,mock,25,8,EI,Epi,0.039589438,-0.034234395
+Epi (+),77,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),77,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),77,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),77,inoculated,mock,mock,11,4,EI,Epi,-0.002578372,0.013892452
+Epi (+),77,inoculated,mock,mock,14,5,EI,Epi,0.018271505,-0.013421814
+Epi (+),77,inoculated,mock,mock,18,6,EI,Epi,0.00789638,-0.00102731
+Epi (+),77,inoculated,mock,mock,21,7,EI,Epi,0.00789638,-0.00102731
+Epi (+),77,inoculated,mock,mock,25,8,EI,Epi,0.05043948,-0.042940766
+Epi (+),77,inoculated,mock,mock,28,9,EI,Epi,0.00789638,-0.00102731
+Epi (+),77,inoculated,mock,mock,32,10,EI,Epi,0.00789638,-0.00102731
+Epi (+),77,inoculated,mock,mock,35,11,EI,Epi,0.003488096,0.005895841
+Epi (+),77,inoculated,mock,mock,39,12,EI,Epi,-0.019039268,-0.01897779
+Epi (+),77,inoculated,mock,mock,42,13,EI,Epi,-0.00568805,-0.011038928
+Epi (+),90,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),90,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),90,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),90,inoculated,mock,mock,11,4,EI,Epi,-0.002578372,0.013892452
+Epi (+),90,inoculated,mock,mock,14,5,EI,Epi,0.004863846,0.004075939
+Epi (+),90,inoculated,mock,mock,18,6,EI,Epi,0.017395129,-0.060262601
+Epi (+),90,inoculated,mock,mock,21,7,EI,Epi,0.046372998,-0.086572011
+Epi (+),90,inoculated,mock,mock,25,8,EI,Epi,-0.019025165,-0.044286761
+Epi (+),90,inoculated,mock,mock,28,9,EI,Epi,0.006805833,-0.054980849
+Epi (+),90,inoculated,mock,mock,32,10,EI,Epi,-0.00762571,-0.005263024
+Epi (+),90,inoculated,mock,mock,35,11,EI,Epi,-0.002578372,0.013892452
+Epi (+),90,inoculated,mock,mock,39,12,EI,Epi,-0.111506475,-0.149001751
+Epi (+),90,inoculated,mock,mock,42,13,EI,Epi,-0.047530632,-0.008440211
+Epi (+),92,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),92,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),92,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),92,inoculated,mock,mock,11,4,EI,Epi,-0.002578372,0.013892452
+Epi (+),92,inoculated,mock,mock,14,5,EI,Epi,-0.002578372,0.013892452
+Epi (+),92,inoculated,mock,mock,18,6,EI,Epi,-0.000343048,0.011098559
+Epi (+),92,inoculated,mock,mock,21,7,EI,Epi,-0.002578372,0.013892452
+Epi (+),92,inoculated,mock,mock,25,8,EI,Epi,0.00789638,-0.00102731
+Epi (+),92,inoculated,mock,mock,28,9,EI,Epi,0.00789638,-0.00102731
+Epi (+),92,inoculated,mock,mock,32,10,EI,Epi,0.018271505,-0.013421814
+Epi (+),92,inoculated,mock,mock,35,11,EI,Epi,0.018271505,-0.013421814
+Epi (+),92,inoculated,mock,mock,39,12,EI,Epi,0.00789638,-0.00102731
+Epi (+),92,inoculated,mock,mock,42,13,EI,Epi,0.00789638,-0.00102731
+Epi (+),109,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),109,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),109,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),109,inoculated,mock,mock,11,4,EI,Epi,0.016658391,0.071388193
+Epi (+),109,inoculated,mock,mock,14,5,EI,Epi,0.108469907,0.030410474
+Epi (+),109,inoculated,mock,mock,18,6,EI,Epi,0.140573238,-0.007249722
+Epi (+),109,inoculated,mock,mock,21,7,EI,Epi,0.146521888,-0.057702835
+Epi (+),109,inoculated,mock,mock,25,8,EI,Epi,0.056628804,-0.034898736
+Epi (+),109,inoculated,mock,mock,28,9,EI,Epi,0.092258988,-0.069670726
+Epi (+),109,inoculated,mock,mock,32,10,EI,Epi,0.022541996,-0.010056274
+Epi (+),109,inoculated,mock,mock,35,11,EI,Epi,-0.002578372,0.013892452
+Epi (+),109,inoculated,mock,mock,39,12,EI,Epi,-0.002578372,0.013892452
+Epi (+),109,inoculated,mock,mock,42,13,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,1,1,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,4,2,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,6,3,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,11,4,EI,Epi,0.001911309,0.025070298
+Epi (+),121,inoculated,mock,mock,14,5,EI,Epi,0.001911309,0.025070298
+Epi (+),121,inoculated,mock,mock,18,6,EI,Epi,0.018271505,-0.013421814
+Epi (+),121,inoculated,mock,mock,21,7,EI,Epi,0.00789638,-0.00102731
+Epi (+),121,inoculated,mock,mock,25,8,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,28,9,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,32,10,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,35,11,EI,Epi,-0.002578372,0.013892452
+Epi (+),121,inoculated,mock,mock,39,12,EI,Epi,-0.012728102,0.009405877
+Epi (+),121,inoculated,mock,mock,42,13,EI,Epi,-0.006107475,0.012086007
