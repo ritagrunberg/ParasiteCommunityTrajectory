@@ -6,9 +6,9 @@ Data files included:
 2. Outplant2019_treatments.csv: description of treatment group for each outplant
 
 Metadata:
-1. Metadata for 2019 Outplant datasets
+1. Metadata_Outplant2019_Infection: contains description of column headers for Outplant2019_infection.csv
 
 R Script:
 1. CURRENT_outplant_trajectory_24Jan2023.Rmd: R markdown file containing all analyses
 
-Revision folder includes defunct analyses
+REVISION folder includes defunct analyses not used in present release
