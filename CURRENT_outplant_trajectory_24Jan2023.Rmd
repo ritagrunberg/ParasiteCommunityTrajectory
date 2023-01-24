@@ -1,0 +1,1543 @@
+---
+title: "Trajectory analysis"
+author: "Rita Grunbreg"
+date: "3/25/2020"
+output: html_document
+---
+.csv files from Outplant2019_master.xls from Brooklynn 
+
+METADATA within excel from Brooklynn:
+Variable/Header	
+
+PLANT_ID: A number given to an individual plant based on it's  assignment to set a of randomoized inoculation treatments. The IDs are the same as the order the plants were inoculated in, which was also randomized.  	
+
+EPICHL_TRT:	Describes if the plant was germinated from seed that was inoculated with Epichloe ( inoculated) or from seed that was not inoculated with Epichloe (free)	
+
+COLLET_TRT:	Describes if the plant was subjected to an inoculum of Colletotrichum spores (inoculated) or subjected to a solution of blank media inoculum, absent of colletotrichum spores (mock)	
+
+RHIZOC_TRT:	Describes if the plant was subjected to an inoculum plug of Rhizoctonia myeclia (inoculated) or subjected to a plug of blank media, absent of Rhizoctonia mycelia (mock)
+
+Treatment_Code:	An code/nickname given to the treatments of the plant based on the epichloe, colletotrichum, or rhizoctonia inoculation						
+									
+Survey.event:	13 surveys were conducted biweekly over a period of 6 weeks. This column indicates the surveys in chronological order								
+Plot.Location:	Refer to field map. The experimental plot contained 141 holes in which to place potted outplants. The holes are named as plot.locations according to their row and hole position. Outplants were randomly assigned a new plot location once per week (every monday)								
+Treatment:	A treatment code that refers to the o the inoculation treatments that a plant was subjected to. Refer to "treatments" tab								
+Plant.ID:	Unique ID of plant		
+
+Tiller.ID:	ID of tiller surveyed on plant. First tillers were randomly selected to be surveyed longitudinally. If the first tiller died or produced a daughter tiller, then a new tiller was assigned (ID of 2) for surveying, and so on.
+
+Leaf.ID:	Leaf 1 is the oldest living leaf on the tiller at the start of the experiment. This is also the inoculated or mock-inoculated leaf. 								
+Damage:	Indicates if a leaf is damaged (D), not damaged (ND), is no leaf is present (NL). If the plant is unable to be surveyed for any reason, such as death, NA's are present. 		
+
+Chew:	indicates insect damage from chewing is present on leaf		
+
+Scrape: 	indicates insect or mollusk damage from scraping is present on leaf	
+
+Mechanical: 	indicates that the leaf has been mechanically damaged from handling or some other event.
+
+Chlorosis:	Indicates that some portion of the leaf is presentinga form of  chlorosis		
+
+Col:	Indicates if Colletotrichum symptoms are observed on the leaf								
+%Col:	Indicates the severity of colletorichum symptoms on the leaf								
+#C.lesions:	Indicates the individual number of lesions that can be discerned on the leaf	
+
+Rhiz:	Indicates if Rhizoctonia symptoms are observed on the leaf								
+%Rhiz:	Indicates the severity of Rhizoctonia symptoms on the leaf								
+#R.lesions:	Indicates the individual number of lesions that can be discerned on the leaf	
+
+Rust:	Indicates if Rust symptoms are observed on the leaf								
+%Rust:	Indicates the severity of Rust symptoms on the leaf								
+#P.lesions:	Indicates the individual number of pustules that are observed on the leaf	
+
+GLS:	Indicates if Gray Leaf Spot symptoms are observed on the leaf								
+%GLS:	Indicates the severity of Gray Leaf Spot symptoms observed on the leaf								
+#GLS.lesions:	Indicates the individual number of Gray Leaf Spot lesions that can be discerned on the leaf	
+
+Epichloe.presence:	Indicates if the fungal endophyte, epichloe, was confirmed present in the tiller after the experiment ended. Epichloe was confirmed via a field tiller immunoblot purchased from Agrinostics. 	
+
+~~~~~ NOTE REMOVE PLANT 8 -- DEAD WHEN EXPERIMENT STARTED ~~~~~~
+
+```{r setup,  results='hide', message=FALSE, warning=FALSE}
+rm(list = ls())  # clear Rs brain 
+library(tidyr)   # tidying data
+library(dplyr)   # manipulating df
+library(ggplot2) # graphing
+library(ggpubr)  # nice package for figures
+library(vegan)   # nmds 
+library(trend)   # mann-kendell trend test
+library(agricolae)#AUDPS
+library(car) #type 3 anovas
+library(segmented)#for piecewise regression model
+library(nlme) #mixed model to be used in piecewise model 
+library(DescTools) #effect sizes 
+###############################################################################################################
+Outplant2019_infection <- read.csv("C:/Users/grunberg/Documents/GitHub/ParasiteCommunityTrajectory/Data/Outplant2019_infection.csv")
+Outplant2019_biomass <- read.csv("C:/Users/grunberg/Documents/GitHub/ParasiteCommunityTrajectory/Data/Outplant2019_biomass.csv")
+Outplant2019_treatments <- read.csv("C:/Users/grunberg/Documents/GitHub/ParasiteCommunityTrajectory/Data/Outplant2019_treatments.csv")
+
+set.seed(123456789)
+```
+Formatting outplant csv files 
+
+Includes making plotting theme
+Getting sample sizes 
+
+```{r formatting}
+rita_theme <-  theme_classic(base_size = 15)+
+  theme(legend.title = element_text(size=7, face="bold"),
+        legend.text = element_text(size=6.5),
+        legend.position=c(0.15,0.18),
+        axis.line = element_line(colour = 'black', size = 0.75),
+        axis.ticks = element_line(colour = "black", size = 0.75),
+        axis.text.x = element_text(size=12,  colour = "black"), 
+        axis.text.y = element_text(size=12,  colour = "black"), # bold
+        axis.title.y = element_text(size=14, colour = "black")
+  )
+
+
+#fix, otherwise R will treat this as another level for this factor 
+Outplant2019_treatments$COLLET_TRT<-gsub("Inoculated", "inoculated", Outplant2019_treatments$COLLET_TRT)
+Outplant2019_treatments$RHIZOC_TRT<-gsub("Inoculated", "inoculated", Outplant2019_treatments$RHIZOC_TRT)
+
+#easier to interpret treatment codes; useful for plotting
+Treat <- c("Epi (+)", 
+           "Epi (+) Col (+) Rhiz (+)",
+           "Epi (-)", 
+           "Epi (-) Rhiz (+)",
+           "Epi (-) Col (+)",
+           "Epi (+) Rhiz (+)",
+           "Epi (+) Col (+)",
+           "Epi (-) Col (+) Rhiz (+)"
+)
+
+#switched to this treatment codes, best for plotting 
+Treat.better <- c("Epi", 
+           "Epi + Col + Rhiz +",
+           "No Symbiont", 
+           "Rhiz",
+           "Col",
+           "Epi + Rhiz",
+           "Epi + Col",
+           "Col + Rhiz"
+)
+
+# merge new treatment codes with old treatment.code; easier to merge Dfs in the future 
+Treatment.code <- unique(Outplant2019_infection$Treatment.code)
+full_treament <- data.frame(Treatment.code,Treat, Treat.better)
+
+Outplant2019_infection %>%
+  group_by(Treatment.code) %>%
+  summarise(plant_sample = n_distinct(PLANT_ID))
+
+#change then name for biomass 
+Outplant2019_biomass.2 <-Outplant2019_biomass %>% 
+  mutate(biomass = Outplant2019_biomass$Oven.dried.weight.g.) %>%
+  dplyr::select(c(1,2,12))
+
+#check plant 8 with no infection
+check8 <-Outplant2019_infection %>%
+  filter(PLANT_ID==8)
+check19 <-Outplant2019_infection %>%
+  filter(PLANT_ID==19)
+check69 <-Outplant2019_infection %>%
+  filter(PLANT_ID==68)
+
+#filter leaves that were not present, so removing NL observations 
+#add days for analysis
+sample_days <-data.frame(Survey.Date=unique(Outplant2019_infection$Survey.Date),
+                         days=c(1, 4, 6, 11,14, 18, 21, 25, 28, 32, 35, 39,42)
+                         )
+
+Outplant2019_infection <- merge(Outplant2019_infection, sample_days, by = c('Survey.Date'))
+
+Outplant2019_infection2 <- Outplant2019_infection %>%
+  filter(Damage %in% c("D", "ND"))  # removing no leaf data = "NL"
+
+#info on unique leaves surveyed
+leaf_obervation <- Outplant2019_infection2  %>% 
+  mutate(host_id = PLANT_ID) %>%
+  unite(plantleaf, PLANT_ID, Leaf.ID,  sep = '_') %>% #merge characters from columns into one thing
+ # group_by(host_id) %>%
+  summarise(leaf_sample = n_distinct(plantleaf))
+
+# merge dfs into one master dataset
+Outplant2019_infection2 <- merge(Outplant2019_infection2, full_treament, by = "Treatment.code")
+outplant_data <- merge(Outplant2019_infection2, Outplant2019_biomass.2, by = "PLANT_ID")
+outplant_data <- merge(outplant_data, Outplant2019_treatments, by = "PLANT_ID") 
+
+outplant_data <- outplant_data %>%
+  mutate_at(c('PLANT_ID','Survey.event', 'Leaf.ID', "Tiller.ID"), as.factor) %>% #convert columns to factors 
+  mutate(sp_rich = specnumber(outplant_data[c(14,17,20,23)]),
+         shannon = diversity(outplant_data[c(14,17,20,23)], index="shannon"),
+         simpson = diversity(outplant_data[c(14,17,20,23)], index="simpson"),
+         )%>%
+  filter(!(PLANT_ID==8))%>% # remove plant 8 dead; also plANT 19 was never infected and just dead 
+  group_by(PLANT_ID, Leaf.ID) %>%
+  mutate(leaf_first = min(days),
+         leaf_last = max(days),
+         leaf_span = leaf_last - leaf_first,
+         num_surveys = n_distinct(Survey.event))%>%
+  ungroup()%>%
+  group_by(PLANT_ID, Leaf.ID, Survey.event)%>%
+  mutate(leaf_age = days- leaf_first)%>%
+  ungroup()
+
+#calculate total damage in case it is relevant
+outplant_data$total_damage <- rowSums(outplant_data[c(14,17,20,23)]) 
+
+# check max values 
+max(outplant_data$X.Col)
+max(outplant_data$X.Rhiz)
+max(outplant_data$X.Rust)
+max(outplant_data$X.GLS)
+
+```
+
+Check overall prevalence data of inoculated parasite species 
+
+```{r prevalence}
+outplant_data%>% 
+  mutate(observation =1)%>%
+  ungroup()%>%
+  group_by(PLANT_ID)%>%
+  mutate(alldamage = sum(total_damage)) %>%
+  filter(alldamage >0 ) %>%
+  group_by(Treat) %>%
+  summarise_at(c("Rhiz", "Col", 'observation'), sum) 
+
+```
+
+Calc some basic leaf demographics data 
+
+Leaf production defined as number of leaves within a plant over the experiment 
+Leaf retention; # of leaves still alive at the end of the experiment 
+Leaf lifespan # days leaf is alive 
+
+```{r leaf lifespan}
+leafretentation <- outplant_data %>%
+  group_by(PLANT_ID, Leaf.ID, Tiller.ID)%>%
+  mutate(alldamage = sum(total_damage)) %>%
+  filter(alldamage >0 ) %>% ungroup()%>%
+  group_by(PLANT_ID, Treat, Survey.event, Leaf.ID) %>%
+  summarise_at('leaf_span', mean) %>% ungroup()%>%
+  filter(Survey.event %in% c("1", "13")) %>% # filter first and final survey 
+  group_by(PLANT_ID, Treat, Leaf.ID) %>%
+  tally() %>%
+  mutate(num_retained = n -1 )%>%
+  group_by(PLANT_ID, Treat) %>%
+  summarise(leaf_retained = sum(num_retained))
+
+leaflife <- outplant_data %>%
+  group_by(PLANT_ID, Treat)%>% 
+  mutate(Leaf.num = as.numeric(Leaf.ID),
+            total_leaves = max(Leaf.num)) %>%
+  ungroup()%>%
+  group_by(PLANT_ID)%>%
+  mutate(alldamage = sum(total_damage)) %>%
+  filter(alldamage >0 ) %>% ungroup()%>%
+  group_by(PLANT_ID, Leaf.ID, Treat, EPICHL_TRT, RHIZOC_TRT, COLLET_TRT) %>%
+  summarise_at(c("leaf_span", "leaf_first", "leaf_last", "total_leaves", "Leaf.num", "num_surveys"), mean)
+
+```
+
+```{r leaf days surveyed}
+order_trt <-c( "2Epi (+)"        ,
+               "8Epi (+) Col (+) Rhiz (+)",
+               "1Epi (-)"      ,
+               "5Epi (-) Rhiz (+)" ,
+               "3Epi (-) Col (+)"    ,
+               "6Epi (+) Rhiz (+)"  ,
+               "4Epi (+) Col (+)"    ,
+               "7Epi (-) Col (+) Rhiz (+)")
+
+full_treament$ordered_trt <- order_trt
+leaflife <- merge(leaflife, full_treament, by = "Treat")   
+
+treatment_names <- list(
+"2Epi (+)"    = "Epi",
+"8Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+ "1Epi (-)"    = "No symbiont",
+"5Epi (-) Rhiz (+)"   = "Rhiz",
+ "3Epi (-) Col (+)"    ="Col",
+"6Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+"4Epi (+) Col (+)" ="Epi + Col",
+"7Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz"
+)
+
+treatment_labeller <- function(variable,value){
+  return(treatment_names[value])
+}
+
+# get df of just inocualted leaf and see how much it contributed to the disease surveys 
+
+inoculated <- leaflife %>% group_by(PLANT_ID) %>%
+  mutate(totalsurvey = sum(num_surveys)) %>%
+  ungroup()%>%
+  group_by(PLANT_ID, Leaf.ID)%>%
+  mutate(contribution = num_surveys/totalsurvey)%>% ungroup() %>%
+  filter(Leaf.ID=='1')%>%
+  mutate(mean_contribution = mean(contribution),
+         max_contribution = max(contribution),
+         min_contribution = min(contribution))
+
+leaflife <- merge(leaflife, Outplant2019_biomass.2, by =c("PLANT_ID"))
+leaflife <- merge(leaflife, full_treament, by =c("Treat"))
+```
+
+
+Graphic showing leaf lifespan for inoculated leaves. 
+Note filter treat to show only the treatments we used in the experiment 
+
+
+```{r leaf production analysis}
+leafdemographics <- outplant_data %>%
+  group_by(PLANT_ID, Treat, Survey.event)%>% 
+  mutate(Leaf.num = as.numeric(Leaf.ID),
+            total_leaves = max(Leaf.num)) %>%
+  ungroup()%>%
+  group_by(PLANT_ID,  days, Survey.event, Treat, EPICHL_TRT, RHIZOC_TRT, COLLET_TRT) %>%
+  summarise(total_leaves = mean(total_leaves),
+            mean_age = mean(leaf_age),
+            var_age = sd(leaf_age),
+            cv_age = var_age/mean_age)%>%
+  mutate_at(vars(cv_age), ~replace(., is.nan(.), 0))
+
+leafabundance <- outplant_data %>%
+  group_by(PLANT_ID, Treat, Survey.event)%>% 
+  mutate(Leaf.num = as.numeric(Leaf.ID),
+        total_leaves = max(Leaf.num)) %>%
+  ungroup()%>%
+  group_by(PLANT_ID, Treat, EPICHL_TRT, RHIZOC_TRT, COLLET_TRT) %>%
+  summarise(mean_leaves = mean(total_leaves),
+            var_leaves = sd(total_leaves),
+            cv_leaves = var_leaves/ mean_leaves)
+
+```
+
+Removing uninfected plants/leaves (never infected at any point of the experiment and also dead/sad plant)
+Then figuring out final sample sizes of leaves used in analysis 
+
+```{r infections plant}
+# removes leafs that were never infected in the experiment 
+outplant_data_infected <- outplant_data%>% 
+  ungroup()%>%
+ # group_by(PLANT_ID)%>%
+  group_by(PLANT_ID, Leaf.ID, Tiller.ID)%>%
+  mutate(alldamage = sum(total_damage)) %>%
+  filter(alldamage >0 )
+
+leaf_rhiz_infected <- outplant_data%>% 
+  ungroup()%>%
+ # group_by(PLANT_ID)%>%
+  group_by(PLANT_ID, Leaf.ID, Tiller.ID)%>%
+  filter(Rhiz >0 ) %>%
+  unite(plantleaf, PLANT_ID, Leaf.ID,  sep = '_') %>% #merge characters from columns into one thing
+  group_by(Treat) %>%
+  summarise(leaf_sample = n_distinct(plantleaf))
+
+leaf_col_infected <- outplant_data%>% 
+  ungroup()%>%
+ # group_by(PLANT_ID)%>%
+  group_by(PLANT_ID, Leaf.ID, Tiller.ID)%>%
+  filter(Col >0 ) %>%
+  unite(plantleaf, PLANT_ID, Leaf.ID,  sep = '_') %>% #merge characters from columns into one thing
+  group_by(Treat) %>%
+  summarise(leaf_sample = n_distinct(plantleaf))
+
+#just for the epichloe inoculated group
+leaf_rhiz_epi <- outplant_data%>%
+  filter(Treat.better=='Epi')%>%
+  filter(Epichloe.presence.x=='1')%>%
+  ungroup()%>%
+  group_by(PLANT_ID, Leaf.ID, Tiller.ID)%>%
+  filter(Rhiz >0 ) %>%
+  unite(plantleaf, PLANT_ID, Leaf.ID,  sep = '_') %>% #merge characters from columns into one thing
+  group_by(Treat) %>%
+  summarise(leaf_sample = n_distinct(plantleaf))
+
+leaf_col_epi <- outplant_data%>%
+  filter(Treat.better=='Epi')%>%
+  filter(Epichloe.presence.x=='1')%>%
+  ungroup()%>%
+  group_by(PLANT_ID, Leaf.ID, Tiller.ID)%>%
+   filter(Col >0 ) %>%
+  unite(plantleaf, PLANT_ID, Leaf.ID,  sep = '_') %>% #merge characters from columns into one thing
+  group_by(Treat) %>%
+  summarise(leaf_sample = n_distinct(plantleaf))
+
+# generate a matrix of leaf_observations; number of times each leaf was surveyed 
+leaf_observation <- as.matrix.data.frame(xtabs(~ PLANT_ID + Leaf.ID, data=outplant_data_infected))
+
+```
+
+Calculate plant level severity 
+
+```{r plant_level df}
+plant_level_outplant_infected <- outplant_data_infected%>%
+  rename(col_sev = 'X.Col', rhiz_sev = "X.Rhiz", rust_sev = "X.Rust", gls_sev = "X.GLS", #rename stuff so its easier
+         epichloe = 'Epichloe.presence.x')%>%
+  group_by(PLANT_ID, Treatment.code, Survey.event, days,Treat,
+           EPICHL_TRT,COLLET_TRT, RHIZOC_TRT, Treat.better) %>%
+  summarise_at(c("col_sev", "rhiz_sev", "rust_sev", "gls_sev", #plant-level severity 
+                 "epichloe", 'total_damage', 'biomass', "Col", "Rhiz", "Rust","GLS"),
+               mean, na.rm = TRUE) %>% ungroup() %>%
+  replace(., is.na(.), 0) %>%
+  mutate_at(c('Survey.event'), as.numeric)%>%
+  mutate(dummy_p = rep(1)) #add dummy variable for ordination
+
+#merge demographics data
+plant_level_outplant_semi <- merge(plant_level_outplant_infected, leafdemographics,
+                              by = c("PLANT_ID", "days", "Survey.event", "Treat",
+                                     "EPICHL_TRT","COLLET_TRT", "RHIZOC_TRT") )
+plant_level_outplant <- merge(plant_level_outplant_semi, leafabundance,
+                              by = c("PLANT_ID",  "Treat", "EPICHL_TRT","COLLET_TRT", "RHIZOC_TRT") )
+```
+
+
+Survival of inoculated leaves 
+
+```{r leaf 1 survival}
+leafinco <-leaflife%>% 
+  filter(Leaf.ID =='1') %>%
+  filter(Treat.better.x %in% c("No Symbiont",  "Col", "Rhiz", "Col + Rhiz")) # filter by the treatments we used in the analysis
+leafepi <- leaflife%>%  
+  filter(Treat.better.x ==  "Epi") %>% # filter by Epi treat used in the analysis
+  filter(Leaf.ID =='1') %>% 
+  filter(Epichloe.presence==1)
+
+
+leafinco <- rbind(leafinco, leafepi)
+leafinco <- leafinco %>% mutate(EPICHL_TRT = as.factor(EPICHL_TRT),
+                                COLLET_TRT = as.factor(COLLET_TRT),
+                                RHIZOC_TRT = as.factor(RHIZOC_TRT),
+                                Treat= as.factor(Treat))
+leafinco$EPICHL_TRT <- relevel(leafinco$EPICHL_TRT, ref='inoculated')
+leafinco$COLLET_TRT <- relevel(leafinco$COLLET_TRT, ref='inoculated')
+leafinco$RHIZOC_TRT <- relevel(leafinco$RHIZOC_TRT, ref='inoculated')
+
+inocsurvey.1 <-aov(num_surveys ~ EPICHL_TRT+ COLLET_TRT* RHIZOC_TRT, data = leafinco)
+summary(inocsurvey.1)
+EtaSq(inocsurvey.1)
+
+leafinco$Treat <- relevel(leafinco$Treat, ref='Epi (-)')
+
+inocsurvey.1 <-aov(num_surveys ~ Treat, data = leafinco)
+EtaSq(inocsurvey.1)
+
+summary(inocsurvey.1)
+out.s <-HSD.test(inocsurvey.1, "Treat", group=TRUE)
+out.s
+```
+
+Since epichloe did not establish within the epichloe group, we are removing plants that never tested positive for epichloe and then using only the Epichloe + group and removing parasites due to lack of statistical power for the other treatment group 
+
+
+Treat
+                          n
+Epi (+)	                  8			
+Epi (+) Col (+)	          5			
+Epi (+) Col (+) Rhiz (+)	5			
+Epi (+) Rhiz (+)	        1	
+
+Next remove Epi negative plants within the Epi treated group 
+
+Generates supplemental figure showing leaf survey time as a function of inoculation treatments
+
+```{r leaf inoculation}
+
+leafspan_graphic_epi <-leafinco %>%
+  mutate(Treat.better.x = factor(Treat.better.x, 
+                                 levels=c("Col + Rhiz", "Rhiz", "Col", 'Epi', "No Symbiont")))%>%
+  ggplot(aes(x=Treat.better.x, y = num_surveys, group=Treat.better.x))+
+  geom_violin(aes(x=Treat.better.x, y = num_surveys, group=Treat.better.x))+
+  geom_point(aes(x=Treat.better.x, y = num_surveys,  fill=Treat.better.x), pch=21, alpha=1, size = 2,
+             position=position_jitterdodge(dodge.width=1,  jitter.height = 0.5, jitter.width = 0.5))+
+  rita_theme+
+  labs(x="",y="# times inoculated leaf was surveyed")+
+  scale_fill_manual(values=c('white','white','white','white', 'white')) + 
+  theme(axis.text.x = element_text( angle=0, hjust = 1, vjust = 0.5),
+        panel.grid.major  = element_line(colour="grey", size=0.25)
+        ) +
+  scale_y_continuous(breaks = seq(0, 13, by = 1))+
+     annotate("text", x = 1.1, y = 4.9, label = "a", size=4) + # Col + rhiz
+   annotate("text", x = 2.1, y = 4.9, label = "a", size=4) +  # rhiz
+   annotate("text", x = 3.1, y = 5.9, label = "a", size=4) +  # Col
+   annotate("text", x = 4.1, y = 12.9, label = "b", size=4) +  # epi
+   annotate("text", x = 5.1, y = 9.9, label = "ab", size=4) + # no sybiont
+  coord_flip()+
+  guides(fill=FALSE)
+
+#jpeg(filename="daysinoculatedleafsurveyed.jpeg", width=180, height= 120, units="mm", bg="white", res=300)
+leafspan_graphic_epi 
+#dev.off()
+
+```
+
+Remove Epichloe negative individuals within the epichloe treated group from dataset due to uncertainity in their establishment
+
+```{r remove epichloe neg for inoculation}
+plant_level_outplant %>% filter(epichloe==1)%>% group_by(Treat)%>%summarise(n = n_distinct(PLANT_ID))
+
+plant_level_outplant_epi <- plant_level_outplant %>% filter(EPICHL_TRT=='inoculated')%>% filter(epichloe==1) %>%
+  filter(Treat=="Epi (+)")
+plant_level_outplant <- plant_level_outplant %>% filter(EPICHL_TRT=='free')
+
+plant_level_outplant <-rbind(plant_level_outplant, plant_level_outplant_epi)
+
+plant_level_outplant %>% summarise(N = n_distinct(PLANT_ID))
+
+plant_level_outplant %>% filter(gls_sev > 0) %>% summarise(gls_number = n_distinct(PLANT_ID), Treat = Treat.better)
+plant_level_outplant %>% filter(col_sev > 0) %>% summarise(gls_number = n_distinct(PLANT_ID))
+plant_level_outplant %>% filter(rust_sev > 0) %>% summarise(gls_number = n_distinct(PLANT_ID))
+
+
+```
+Calculate disease progression in outplants
+
+Considered parasite severity within a plant over time 
+
+1. manova
+2. follow up anovas
+3. get means for plotting effects
+
+```{r parasite AUDPS in outplant}
+inoculationcontrasts <- cbind(level = c("No symbiont", "Epi", "Col", "Rhiz", "Col + Rhiz"),
+                              c(4,-1,-1,-1,-1),
+                              c(0,1,1,-1,-1),
+                              c(0,1,-1,0,0), 
+                              c(0,0,0,1,-1)
+                              )
+
+#AUDPS of disease severity over time
+library(dplyr)
+diseaseprog <- plant_level_outplant %>% 
+  ungroup()%>%
+  group_by(PLANT_ID)%>%
+  arrange(days)%>%
+  mutate(Colletotrichum = audps(col_sev, days, type='absolute'), #AUDPS for each parasite
+         Rhizoctonia = audps(rhiz_sev, days, type='absolute'), 
+         Puccinia = audps(rust_sev, days, type='absolute')) %>%
+  mutate(EPICHL_TRT=as.factor(EPICHL_TRT), 
+         COLLET_TRT = as.factor(COLLET_TRT),
+         RHIZOC_TRT = as.factor(RHIZOC_TRT),
+         Treat.better= as.factor(Treat.better)) %>%
+  ungroup()%>%
+  group_by(PLANT_ID, EPICHL_TRT, COLLET_TRT, RHIZOC_TRT, Treat.better) %>%
+  summarise_at(c("Colletotrichum", "Rhizoctonia", "Puccinia"), mean)%>%
+  mutate(Colletotrichum = log10(Colletotrichum+1),
+         Rhizoctonia = log10(Rhizoctonia+1),
+         Puccinia = log10(Puccinia+1)) %>%
+  mutate(Treat.better=as.factor(Treat.better))
+
+#set reference levels
+diseaseprog <- within(diseaseprog, EPICHL_TRT <- relevel(EPICHL_TRT, ref = 'free'))
+levels(diseaseprog$EPICHL_TRT)[1] #check
+diseaseprog <- within(diseaseprog, COLLET_TRT <- relevel(COLLET_TRT, ref = 'mock'))
+diseaseprog <- within(diseaseprog, RHIZOC_TRT <- relevel(RHIZOC_TRT, ref = 'mock'))
+
+diseaseprog <- within(diseaseprog, EPICHL_TRT <- relevel(EPICHL_TRT, ref = 'inoculated'))
+levels(diseaseprog$EPICHL_TRT)[1] #check
+diseaseprog <- within(diseaseprog, COLLET_TRT <- relevel(COLLET_TRT, ref = 'inoculated'))
+diseaseprog <- within(diseaseprog, RHIZOC_TRT <- relevel(RHIZOC_TRT, ref = 'inoculated'))
+
+head(diseaseprog)
+
+library(emmeans)
+diseaseprog <- within(diseaseprog, Treat.better <- relevel(Treat.better, ref = 'No Symbiont'))
+
+# MANOVA on all disease progression
+man_disease <- manova(cbind((Colletotrichum), (Rhizoctonia), (Puccinia))~ EPICHL_TRT + RHIZOC_TRT * COLLET_TRT, 
+                      data = diseaseprog)
+summary(man_disease)
+
+man_disease <- manova(cbind((Colletotrichum), (Rhizoctonia), (Puccinia))~Treat.better, 
+                      data = diseaseprog)
+summary(man_disease)
+
+# follow up ANOVAs on each parasite species
+
+### col
+library(car) # use car for type 3 anova 
+library(pander) # nice display of anova tables 
+library(multcomp)
+options(contrasts=c(unordered="contr.sum", ordered="contr.poly"))
+aov_col <- lm(Colletotrichum ~ Treat.better, data = diseaseprog)
+summary(aov_col)
+plot(aov_col)
+
+#both give type 3 test for ANOVA 
+drop1(aov_col, .~., test='F')
+col_fit3 <- Anova(aov_col, type='III', contrasts=list(topic=contr.sum, sys=contr.sum))
+summary(col_fit3)
+pander(col_fit3)
+
+#calc eta square for effect sizes 
+EtaSq(aov_col, type=3)
+
+#tukey post hoc comparison 
+aov_col <- lm(Colletotrichum ~ Treat.better, data = diseaseprog)
+col_effect <-emmeans(aov_col,~ Treat.better) %>% data.frame()
+summary(glht(aov_col, linfct = mcp(Treat.better = "Tukey")), test = adjusted("holm"))
+
+### rhiz
+aov_rhiz <- aov(Rhizoctonia ~ Treat.better, data = diseaseprog)
+plot(aov_rhiz)
+drop1(aov_rhiz, .~., test='F')
+EtaSq(aov_rhiz, type=3)
+
+aov_rhiz <- aov(Rhizoctonia ~ Treat.better, data = diseaseprog)
+rhiz_effect <-emmeans(aov_rhiz,~Treat.better) %>% data.frame()
+summary(glht(aov_rhiz, linfct = mcp(Treat.better = "Tukey")), test = adjusted("holm"))
+
+### rust
+aov_rust <- aov(Puccinia~ Treat.better, data = diseaseprog)
+drop1(aov_rust, .~., test='F')
+EtaSq(aov_rust, type = 3)
+
+rust_effect <-emmeans(aov_rust,~Treat.better) %>% data.frame()
+summary(glht(aov_rust, linfct = mcp(Treat.better = "Tukey")), test = adjusted("holm"))
+```
+
+Produce graphic with disease progression results
+Figure 3
+
+```{r FIGURE 3 graph disease progression results}
+diseaseprog <-   diseaseprog %>%
+  mutate(Treat.better = factor(Treat.better, # re order for plotting purporses 
+                               levels=c("Col + Rhiz","Rhiz", "Col", "Epi", "No Symbiont")))
+
+col_effect <-   col_effect %>%
+  mutate(Treat.better = factor(Treat.better, # re order for plotting purporses 
+                               levels=c("Col + Rhiz","Rhiz", "Col", "Epi", "No Symbiont")))
+
+jitter <- position_jitter(width = 0, height = 0.1)
+
+Col_audps <- ggplot(aes(y=Treat.better, x = emmean), data= col_effect) +
+  geom_point(data=diseaseprog, aes(y=Treat.better, x = Colletotrichum), 
+             size=1, pch=21, alpha=0.3, position = jitter)+
+  geom_errorbarh(aes(xmax = lower.CL, xmin = upper.CL), height = .2)+
+  geom_point(aes(y=Treat.better, x = emmean), 
+             data=col_effect,  size=3)+
+  rita_theme+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=1),
+        strip.text = element_text(size = 15))+
+ # annotate("text", x = 2, y = 5, label ="A.")+
+  ggtitle("A.")+
+  coord_flip()+
+  annotate("text", y = 1, x = 2, label = "a", size=3) + # Col + rhiz
+  annotate("text", y = 2, x = 1.6, label = "ab", size=3) +  # rhiz
+  annotate("text", y = 3, x = 1.3, label = "b", size=3) +  # Col
+  annotate("text", y = 4, x = 1.9, label = "ab", size=3) +  # epi
+  annotate("text", y = 5, x = 1.6, label = "ab", size=3) + # no sybiont
+ # theme(plot.title = element_text(hjust = 0.5))+
+   theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1))+
+   theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())+
+  labs(y="", x=expression(italic(Colletotrichum)))
+Col_audps
+
+
+rhiz_effect <-   rhiz_effect %>%
+  mutate(Treat.better = factor(Treat.better, # re order for plotting purporses 
+                               levels=c("Col + Rhiz","Rhiz", "Col", "Epi", "No Symbiont")))
+
+Rhiz_audps <- ggplot(aes(y=Treat.better, x = emmean), data= rhiz_effect) +
+  geom_point(data=diseaseprog, aes(y=Treat.better, x = Rhizoctonia), position = jitter,
+             size=1, pch=21, alpha=0.3)+
+  geom_errorbarh(aes(xmax = lower.CL, xmin = upper.CL), height = .2)+
+  geom_point(aes(y=Treat.better, x = emmean), 
+             data=rhiz_effect,  size=3)+
+  rita_theme+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=1),
+        strip.text = element_text(size = 15))+
+  ggtitle("B.")+
+    coord_flip()+
+  annotate("text", y = 1, x = 0.7, label = "ab", size=3) + # Col + rhiz
+  annotate("text", y = 2, x = 1.25, label = "a", size=3) +  # rhiz
+  annotate("text", y = 3, x = 0.55, label = "b", size=3) +  # Col
+  annotate("text", y = 4, x = 1.2, label = "ab", size=3) +  # epi
+  annotate("text", y = 5, x = 1.1, label = "ab", size=3) + # no sybiont
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1))+
+     theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())+
+  labs(y="", x =expression(italic(Rhizoctonia)))
+
+Rhiz_audps
+
+rust_effect <-   rust_effect %>%
+  mutate(Treat.better = factor(Treat.better, # re order for plotting purporses 
+                               levels=c("Col + Rhiz","Rhiz", "Col", "Epi", "No Symbiont")))
+
+Rust_audps <- ggplot(aes(y=Treat.better, x = emmean), data= rust_effect) +
+  geom_point(data=diseaseprog, aes(y=Treat.better, x = Puccinia), position = jitter,
+             size=1, pch=21, alpha=0.3)+
+  geom_errorbarh(aes(xmax = lower.CL, xmin = upper.CL), height = .2)+
+  geom_point(aes(y=Treat.better, x = emmean), 
+             data=rust_effect,  size=3)+
+  rita_theme+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=1),
+        strip.text = element_text(size = 15))+
+  ggtitle("C.")+
+  coord_flip()+
+  annotate("text", y = 1, x = 0.5, label = "a", size=3) + # Col + rhiz
+  annotate("text", y = 2, x = 0.4, label = "a", size=3) +  # rhiz
+  annotate("text", y = 3, x = 0.25, label = "a", size=3) +  # Col
+  annotate("text", y = 4, x = 0.3, label = "a", size=3) +  # epi
+  annotate("text", y = 5, x = 0.45, label = "a", size=3) + # no sybiont
+ # theme(plot.title = element_text(hjust = 0.5))+
+ # theme(axis.title.y=element_blank(), axis.text.y=element_blank())+
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))+
+  labs(y="", x =expression(italic(Puccinia)))
+Rust_audps
+
+
+
+
+require(grid)
+#jpeg(filename="Figure3.jpeg", width=220, height=90, units="mm", bg="white", res=300)
+disease_progression <-ggarrange(Col_audps #+ #rremove("ylab") + 
+                                # rremove("xlab")
+                                ,
+                                Rhiz_audps #+ #rremove("ylab") #+
+                                 # rremove("xlab")
+                                , 
+                                Rust_audps #+ #rremove("ylab") + 
+                                #  rremove("xlab")
+                                ,
+                                ncol=1, nrow=3,
+                              #  common.legend = TRUE, legend = "bottom",
+                                heights  = c(0.75, 0.75,1.05),# align = 'hv',
+                             # labels = 'AUTO',
+                                font.label = list(size = 10, color = "black", face = "bold", family = NULL, position = "top")
+)
+
+annotate_figure(disease_progression, 
+                left = textGrob("       Disease progression", rot = 90, vjust = 1, gp = gpar(cex = 1.3)),
+                bottom = textGrob("Inoculation treatment", gp = gpar(cex = 1.3))
+                )
+#dev.off()
+
+```
+
+NOW COMMUNITY TRAJECTORY ANALYSIS. 
+
+start with principal coordinates analysis on parasite plant level infection severity 
+
+```{r PCOA}
+# create community matrix and envi data matrix 
+p_matrix<-plant_level_outplant[,c(10:13,21)] # matrix without epichloe presence 
+p_envi<-plant_level_outplant[,1:9,22:23] # matrix with relevant treatment data 
+
+# remove columns 
+p_matrix<-p_matrix[, colSums(abs(p_matrix)) !=0] # removes columns with all zeros
+
+# remove rows without parasites; this should do nothing now bc we added dummy_p
+p01<-p_matrix[rowSums(abs(p_matrix))!=0,]  # remove rows with no parasites
+envi01<-p_envi[rowSums(abs(p_matrix))!=0,]  # remove rows with no parasites 
+
+#standardize values to unit maximum 
+pt<-apply(p01,2, function(x) x/max(x)) #exclude epichloe bc this will make epi plants clump together which is an artifact of inoculation 
+
+#PCOA 
+parasite.dist <- vegdist(pt, 'bray') # get BC distance matrix 
+parasite.pcoa <- wcmdscale(parasite.dist, eig = TRUE, add = "lingoes")
+round(eigenvals(parasite.pcoa), 3)
+scrs <- scores(parasite.pcoa, choices = 1:2) # extract scores 
+spp_scrs <- wascores(scrs, pt,expand = FALSE) # extract species projections
+species <- c("Col", "Rhiz", "Pucc", "Pyri", "Dummy")
+proj_spp <-data.frame(Axis1 = spp_scrs[,1], 
+                      Axis2 = spp_scrs[,2], species=species)
+
+plot(parasite.pcoa)
+points(spp_scrs, col = "red", pch = 19)
+
+#extract axis 1 and 2 in new DF with treatment info 
+pcoa12 <- data.frame(Treat= p_envi$Treat, 
+                     Survey.event = p_envi$Survey.event,
+                     Axis1= scrs[,1], 
+                     Axis2 = scrs[,2],
+                     PLANT_ID = p_envi$PLANT_ID)
+
+ggplot()+geom_point(aes(x=Axis1, y=Axis2),data= pcoa12)
+```
+
+Calculate community centroids 
+
+```{r NMDS centroids}
+#scrsparasite <-scores(ordO_pt, display = "sites", "species")
+cent <- pcoa12 %>%
+  group_by(Treat, Survey.event) %>%
+  summarise_at(c("Axis1", 'Axis2'), mean)
+```
+
+Try renaming the labels for the facet wrap; just for graphical purposes 
+
+```{r graphic_PCOA}
+
+topp<-max(parasite_all[,10:11]) #determines maximum and minimum values for the plot axes
+bott<-min(parasite_all[,10:11]) #I draw from both data sets because I make the graph sqaure and
+
+order_trt <-c( "2Epi (+)"        ,
+               "8Epi (+) Col (+) Rhiz (+)",
+               "1Epi (-)"      ,
+               "5Epi (-) Rhiz (+)" ,
+               "3Epi (-) Col (+)"    ,
+               "6Epi (+) Rhiz (+)"  ,
+               "4Epi (+) Col (+)"    ,
+               "7Epi (-) Col (+) Rhiz (+)")
+
+full_treament$ordered_trt <- order_trt
+parasite_all<- merge(pcoa12, full_treament, by = c("Treat"))   
+
+treatment_names <- list(
+"2Epi (+)"    = "Epi",
+"8Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+ "1Epi (-)"    = "No symbiont",
+"5Epi (-) Rhiz (+)"   = "Rhiz",
+ "3Epi (-) Col (+)"    ="Col",
+"6Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+"4Epi (+) Col (+)" ="Epi + Col",
+"7Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz"
+)
+
+treatment_labeller <- function(variable,value){
+  return(treatment_names[value])
+}
+
+#jpeg(filename="outplant_PCOA.jpeg", width=180, height=110, units="mm", bg="white", res=300)
+ggplot(parasite_all, aes(x= Axis1, y=Axis2))+
+  geom_hline(yintercept = 0, lty=2, color="grey") +
+  geom_vline(xintercept = 0, lty=2, color="grey") +
+  geom_point( size =3,  pch=21)+
+  xlab("Axis 1") +
+  ylab("Axis 2") +
+  # xlim(c( bott-0.1, topp+0.1)) +
+  #ylim(c( bott-0.1, topp+0.1)) +
+  theme_pubr() +
+  theme(legend.text = element_text(size=8), legend.box = "horizontal",
+        legend.title = element_text(size=9, face="bold"),
+        legend.position=c(0.13,0.85)) +
+  guides(colour = guide_legend(override.aes = list(size=70)))+
+  theme(plot.title = element_text(hjust = 0.5, size=15, face="bold")) + # guides(shape=FALSE)+ 
+  facet_wrap(~ordered_trt,
+             ncol = 2, nrow = 4,
+             labeller=treatment_labeller)+
+  guides(fill=FALSE, color=FALSE)+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=1),
+        strip.text = element_text(size = 15)) # add black square panel around graphic
+#dev.off()
+```
+
+```{r rename labels for panel}
+order_trt <-c( "2Epi (+)"        ,
+               "8Epi (+) Col (+) Rhiz (+)",
+               "1Epi (-)"      ,
+               "5Epi (-) Rhiz (+)" ,
+               "3Epi (-) Col (+)"    ,
+               "6Epi (+) Rhiz (+)"  ,
+               "4Epi (+) Col (+)"    ,
+               "7Epi (-) Col (+) Rhiz (+)")
+
+full_treament$ordered_trt <- order_trt
+cent <- merge(cent, full_treament, by = "Treat")   
+
+treatment_names <- list(
+"2Epi (+)"    = "Epi",
+"8Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+ "1Epi (-)"    = "No symbiont",
+"5Epi (-) Rhiz (+)"   = "Rhiz",
+ "3Epi (-) Col (+)"    ="Col",
+"6Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+"4Epi (+) Col (+)" ="Epi + Col",
+"7Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz"
+)
+
+treatment_labeller <- function(variable,value){
+  return(treatment_names[value])
+}
+```
+
+```{r nmds with all data and centroids}
+parasite_all <- parasite_all %>% arrange(Treat, PLANT_ID, Survey.event)
+
+#jpeg(filename="SFigure_PCoA_outplants.jpeg", width=180, height=270, units="mm", bg="white", res=300)
+ggplot(parasite_all, aes(x= Axis1, y=Axis2))+
+  geom_hline(yintercept = 0, lty=2, color="grey") +
+  geom_vline(xintercept = 0, lty=2, color="grey") +
+  geom_segment(aes(x=Axis1, 
+                   y = Axis2,
+                   xend = lead(Axis1),
+                   yend = lead(Axis2), 
+                   color=factor(Survey.event),
+                   alpha=factor(Survey.event), group=PLANT_ID,
+                   ),
+               arrow = arrow(length = unit(0.05,"npc"), type = "closed"
+               ))+
+  xlab("Axis 1") +
+  ylab("Axis 2") +
+  theme_pubr() +
+  theme(legend.text = element_text(size=8), legend.box = "horizontal",
+        legend.title = element_text(size=9, face="bold"),
+        legend.position=c(0.13,0.85)) +
+  guides(colour = guide_legend(override.aes = list(size=70)))+
+  theme(plot.title = element_text(hjust = 0.5, size=15, face="bold")) + # guides(shape=FALSE)+ 
+  facet_wrap(~ordered_trt,
+             ncol = 2, nrow = 4,
+             labeller=treatment_labeller)+
+  guides(fill=FALSE, color=FALSE)+
+  guides(fill=FALSE, color=FALSE,alpha=FALSE)+
+  scale_color_manual(values =c("#e7298a", "black", "black", "black", "black", "black",
+                               "black", "black", "black", "black", "black", "#1b9e77", "white"))+
+  scale_alpha_manual(values =c(1,1,1,1,1,1,
+                               1,1,1,1,1,1,0))+
+  geom_text(data=proj_spp, aes(x=Axis1,y=Axis2, label=species),
+             fontface =1, colour = "black" , size=4) + # parasite species projections
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=1),
+        strip.text = element_text(size = 15))
+#dev.off()
+
+```
+
+This generates Figure 4 
+
+```{r graphic_centroid}
+topp<-max(cent[,3:4]) #determines maximum and minimum values for the plot axes
+bott<-min(cent[,3:4]) #I draw from both data sets because I make the graph sqaure and
+
+cent <- cent %>% 
+  arrange(ordered_trt,Survey.event)
+
+#rescaling the projections to fit on centroid graphic
+ parasite.coordinates <- data.frame(parasite = c("Col", 'Rhiz', "Pucc", "Pyri"),
+                                    Axis1 = c(0.03, -0.005, -0.06, -0.010),
+                                    Axis2= c(-0.025, 0.015, -0.04, 0.022))
+
+#jpeg(filename="Figure4.jpeg", width=180, height=270, units="mm", bg="white", res=300)
+ggplot(cent, aes(x= Axis1, y=Axis1))+
+  geom_hline(yintercept = 0, lty=2, color="grey") +
+  geom_vline(xintercept = 0, lty=2, color="grey") +  
+  geom_segment(aes(x=Axis1, 
+                   y = Axis2,
+                   xend = lead(Axis1),
+                   yend = lead(Axis2), 
+                   color=factor(Survey.event),
+                   alpha=factor(Survey.event)
+  ),
+  arrow = arrow(length = unit(0.05,"npc"), type = "closed"
+  ))+
+  xlab("Axis 1 [45%]") +
+  ylab("Axis 2 [34%]") +
+  theme_pubr() +
+  theme(legend.text = element_text(size=8), legend.box = "horizontal",
+        legend.title = element_text(size=9, face="bold"),
+        legend.position=c(0.13,0.85)) +
+  guides(colour = guide_legend(override.aes = list(size=70)))+
+  theme(plot.title = element_text(hjust = 0.5, size=15, face="bold")) + # guides(shape=FALSE)+ 
+  facet_wrap(~ordered_trt,
+             ncol = 2, nrow = 4,
+             labeller=treatment_labeller)+
+  guides(fill=FALSE, color=FALSE,alpha=FALSE)+
+  scale_color_manual(values =c("#7570b3", "black", "black", "black", "black", "black",
+                               "black", "black", "black", "black", "black", "#1b9e77", "white"))+
+  scale_alpha_manual(values =c(1,1,1,1,1,1,
+                               1,1,1,1,1,1,0))+
+  coord_cartesian(xlim =c(-0.065,0.035),
+                  ylim=c(-0.045, 0.025))+
+  geom_text(data=parasite.coordinates, aes(x=Axis1,y=Axis2, label=parasite),
+            fontface =1, colour = "black" , size=4)+
+  theme(panel.border = element_rect(colour = "black", fill=NA, size=1),
+        strip.text = element_text(size = 15)) 
+#dev.off()
+
+  
+```
+
+NEXT STEP: 
+
+(1)	Distance moved (d) by a parasite community can be measured by calculating Euclidean distance between community states (c) at each survey point (i). Here, x and y are the NMDS coordinates, representing the community states (c) based on B-C distances. The greater the distance between community states, the more dissimilar the communities have become over time. 
+
+d= √((x_(i+1) )-x_i  )^2+(y_(i+1)-y_i  )^2
+
+The total trajectory distance is the sum of all distances (d) between sequential community states 	(c which represents the NMDS coordinates):
+
+L(T)= ∑_(i=1)^(n-1)▒d  (c_i,c_(i+1))
+
+And from this I calculate the average distanced traveled by a trajectory: (t) is the time (here 	survey event)  
+
+S(T)=L(T)/(t_n- t_1 )  
+```{r distance moved}
+dist.pt <- function(x1, y1, x2, y2) sqrt((x2-x1)^2 + (y2-y1)^2) # finds distance between points 
+
+plant_list <- unique(pcoa12$PLANT_ID) #list for the loop 
+dist_outplant <- data.frame() # df for output of loop
+
+for (i in plant_list){
+  plant_id <- i
+  plant_target <- pcoa12 %>% 
+    filter(PLANT_ID == i) %>% arrange(Survey.event)
+  
+  TIME1_2 <- dist.pt (as.numeric(plant_target[1,3]), as.numeric(plant_target[1,4]),as.numeric(plant_target[2,3]), as.numeric(plant_target[2,4] ))
+  TIME2_3 <- dist.pt (as.numeric(plant_target[2,3]), as.numeric(plant_target[2,4]),as.numeric(plant_target[3,3]), as.numeric(plant_target[3,4] ))
+  TIME3_4 <- dist.pt (as.numeric(plant_target[3,3]), as.numeric(plant_target[3,4]),as.numeric(plant_target[4,3]), as.numeric(plant_target[4,4] ))
+  TIME4_5 <- dist.pt (as.numeric(plant_target[4,3]), as.numeric(plant_target[4,4]),as.numeric(plant_target[5,3]), as.numeric(plant_target[5,4] ))
+  TIME5_6 <- dist.pt (as.numeric(plant_target[5,3]), as.numeric(plant_target[5,4]),as.numeric(plant_target[6,3]), as.numeric(plant_target[6,4] ))
+  TIME6_7 <- dist.pt (as.numeric(plant_target[6,3]), as.numeric(plant_target[6,4]),as.numeric(plant_target[7,3]), as.numeric(plant_target[7,4] ))
+  TIME7_8 <- dist.pt (as.numeric(plant_target[7,3]), as.numeric(plant_target[7,4]),as.numeric(plant_target[8,3]), as.numeric(plant_target[8,4] ))
+  TIME8_9 <- dist.pt (as.numeric(plant_target[8,3]), as.numeric(plant_target[8,4]),as.numeric(plant_target[9,3]), as.numeric(plant_target[9,4] ))
+  TIME9_10 <- dist.pt (as.numeric(plant_target[9,3]), as.numeric(plant_target[9,4]),as.numeric(plant_target[10,3]), as.numeric(plant_target[10,4] ))
+  TIME10_11 <- dist.pt (as.numeric(plant_target[10,3]), as.numeric(plant_target[10,4]),as.numeric(plant_target[11,3]), as.numeric(plant_target[11,4] ))
+  TIME11_12 <- dist.pt (as.numeric(plant_target[11,3]), as.numeric(plant_target[11,4]),as.numeric(plant_target[12,3]), as.numeric(plant_target[12,4] ))
+  TIME12_13 <- dist.pt (as.numeric(plant_target[12,3]), as.numeric(plant_target[12,4]),as.numeric(plant_target[13,3]), as.numeric(plant_target[13,4] ))
+  
+  dist_moved <- data.frame(i, TIME1_2, TIME2_3, TIME3_4, TIME4_5, TIME5_6, TIME6_7, 
+                           TIME7_8, TIME8_9, TIME9_10, TIME10_11, TIME11_12, TIME12_13)
+  dist_outplant <-rbind(dist_outplant, dist_moved)
+  }
+
+col_head <- c('PLANT_ID', 'TIME1_2', 'TIME2_3', 'TIME3_4', 'TIME4_5', 'TIME5_6', 
+              'TIME6_7', 'TIME7_8', 'TIME8_9', 'TIME9_10', 'TIME10_11', 'TIME11_12', 'TIME12_13')
+
+colnames(dist_outplant) <- col_head
+```
+
+```{r dist formatting}
+dist_outplant<-  dist_outplant%>%
+  mutate(total_distance = rowSums(.[2:13], na.rm=TRUE),
+         mean_distance = rowMeans(.[2:13], na.rm=TRUE))
+pdist_outplant <- merge(dist_outplant, plant_level_outplant, by =c("PLANT_ID"))
+
+time_btwm <- data.frame(
+  Time = c('TIME1_2', 'TIME2_3', 'TIME3_4', 'TIME4_5', 'TIME5_6', 'TIME6_7',
+           'TIME7_8', 'TIME8_9', 'TIME9_10', 'TIME10_11', 'TIME11_12', "TIME12_13"),
+  Time_step = c(seq(1:12))
+  ) 
+
+head(pdist_outplant)
+```
+
+```{r graphics for total distance}
+pdist_outplant <- pdist_outplant %>%
+  mutate(PLANT_ID = as.factor(PLANT_ID))%>%
+  group_by(PLANT_ID, EPICHL_TRT, COLLET_TRT, RHIZOC_TRT, Treat, Treatment.code)%>%
+  summarise_at('total_distance', mean) %>%
+  mutate(EPICHL_TRT = as.factor(EPICHL_TRT),
+         COLLET_TRT = as.factor(COLLET_TRT),
+         RHIZOC_TRT = as.factor(RHIZOC_TRT),
+         Treat=as.factor(Treat))%>%
+  ungroup()%>%
+  filter(total_distance >0 ) # double checking uninfected hosts are removed 
+
+#set reference levels 
+pdist_outplant$EPICHL_TRT <- relevel(pdist_outplant$EPICHL_TRT, ref='inoculated')
+pdist_outplant$COLLET_TRT <- relevel(pdist_outplant$COLLET_TRT, ref='inoculated')
+pdist_outplant$RHIZOC_TRT <- relevel(pdist_outplant$RHIZOC_TRT, ref='inoculated')
+
+pdist_outplant$Treat <- relevel(pdist_outplant$Treat, ref='Epi (-)')# for treat set reference as no symbiont 
+
+#log transform total distance  moved 
+pdist_outplant <- pdist_outplant %>% 
+  mutate(log_distance = log10(total_distance))
+
+library(emmeans)
+pdi.mod <-aov(log_distance ~ Treat, pdist_outplant)
+summary(pdi.mod)
+pdist_mean <-emmeans(pdi.mod, ~ Treat) %>% data.frame()
+pdist_mean <- merge(pdist_mean, full_treament, by = "Treat")   
+library(dplyr)
+pdist_outplant <- merge(pdist_outplant, full_treament, by = 'Treat')
+```
+
+plot results for Figure 5
+
+```{r plot total distance moved}
+dodge <- position_dodge(width = 1)
+
+#reorder factors for plotting
+pdist_mean <- pdist_mean%>%
+  mutate(Treat.better = factor(Treat.better, 
+                                 levels=c("Col + Rhiz", "Rhiz", "Col", 'Epi', "No Symbiont")))
+pdist_outplant <- pdist_outplant%>%
+  mutate(Treat.better = factor(Treat.better, 
+                                 levels=c("Col + Rhiz", "Rhiz", "Col", 'Epi', "No Symbiont")))
+
+#jpeg(filename="Figure5.jpeg", width=120, height=90, units="mm", bg="white", res=300)
+ggplot(data=pdist_mean, aes(x=Treat.better, y = emmean,  group=Treat.better)) +
+  geom_point(aes(x=Treat.better, y = log_distance, fill=Treat.better), pch=21, alpha=0.3,
+             position=position_jitterdodge(dodge.width=1,  jitter.width = 0.3), data= pdist_outplant)+
+  geom_errorbar(aes(ymin=lower.CL, ymax=upper.CL), 
+                position=dodge, width=0.1, data=pdist_mean) +
+  geom_point(aes(x=Treat.better, y = emmean), 
+              size=3, alpha=1)+ 
+  scale_fill_manual(values=c('white','white','white','white','white'))+
+  rita_theme+
+  labs(x="", y="log cumulative community change")+
+   annotate("text", x = 1, y = 0.1, label = "a", size=3) + # Col + rhiz
+   annotate("text", x = 2, y = 0.1, label = "a", size=3) +  # rhiz
+   annotate("text", x = 3, y = -0.5, label = "b", size=3) +  # Col
+   annotate("text", x = 4, y = -0.25, label = "ab", size=3) +  # epi
+   annotate("text", x = 5, y = -0.25, label = "ab", size=3) + # no sybiont
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5, hjust=1))+
+ # coord_flip()+
+  guides(fill=FALSE) 
+#dev.off()
+```
+
+
+```{r total distance model}
+# # set reference level here for the contrasts  (set as.factor, and then set reference level) 
+pdist_outplant$Treat <- relevel(pdist_outplant$Treat, ref='Epi (-)')
+
+temporal.variation.mod <- aov(log_distance ~Treat, data= pdist_outplant)
+
+library(car) # type 3 anova
+temporal.variation.mod.type3 <-Anova(temporal.variation.mod, type ='III' )
+temporal.variation.mod.type3
+
+library(DescTools) # effect sizes 
+EtaSq(temporal.variation.mod, type = 3) # effect size
+
+#post hoc comparision between treatments 
+summary(glht(temporal.variation.mod, linfct = mcp(Treat = "Tukey")), test = adjusted("holm"))
+print(HSD.test(temporal.variation.mod, "Treat", group=TRUE)$groups)
+```
+     
+
+Plants initially inoculated with different fungal symbionts may exhibit different parasite community trajectories. To test this hypothesis, I calculated the treatment centroid of the outplants for each survey event and then tested for convergence between trajectories. Here, I calculated Euclidean distance between community states for time paired treatment groups (e.g., distance between group i and group j at time step 1; group i and  group j at time step 2; etc.. see figure below). 
+
+d= √((x_i )-x_j  )^2 + (y_i-y_j  )^2
+
+Then I analyzed the relationship between distance between treatment groups (i.e., dissimilarity between community states) and time, to evaluate whether community trajectories become more dissimilar as communities develop. I used the non-parametric Mann-Kendall test to detect monotonic trends between dissimilarity (i.e., distance between treatment centroids) and time. Trajectories that are diverging over time have a tau value greater than 0 (i.e., positive relationship between dissimilarity and time), while trajectories that are converging over time are less than 0 (i.e., negative relationship between dissimilarity and time). 
+```{r trajectory}
+###################################################################################################
+# distance between treatment centroids: how dissimilar are the trajectories btwn groups 
+###################################################################################################
+dist.pt <- function(x1, y1, x2, y2) sqrt((x2-x1)^2 + (y2-y1)^2) # finds distance between points 
+
+cent <- pcoa12 %>%
+  group_by(Treat, Survey.event) %>%
+  summarise_at(c("Axis1", 'Axis2'), mean) 
+
+trt_list <- unique(cent$Treat)
+trt_list2 <-c("Epi (-) Col (+)",
+              "Epi (-) Col (+) Rhiz (+)",
+              "Epi (-) Rhiz (+)", 
+              "Epi (+)", "Epi (+) Col (+)","Epi (+) Col (+) Rhiz (+)", "Epi (+) Rhiz (+)",  "Epi (-)")
+
+dist_btw_trt <- data.frame()
+
+for (i in trt_list){
+  for(j in trt_list){
+    
+    treat <- i
+    treat2 <- j 
+    
+    #trt_one <- cent %>% filter  (Treat == "Epi (-)" )
+    #trt_two <- cent %>% filter  (Treat == "Epi (+) Col (+)" )
+    trt_one <- cent %>% filter  (Treat == i )
+    trt_two <- cent %>% filter  (Treat == j )
+    trt_merge <- merge(trt_one, trt_two, by = c("Survey.event"))
+    
+    TIME1 <- dist.pt (trt_merge[1,3], trt_merge[1,4],trt_merge[1,6], trt_merge[1,7] )
+    TIME2<- dist.pt (trt_merge[2,3], trt_merge[2,4],trt_merge[2,6], trt_merge[2,7] )
+    TIME3 <- dist.pt (trt_merge[3,3], trt_merge[3,4],trt_merge[3,6], trt_merge[3,7] )
+    TIME4 <- dist.pt (trt_merge[4,3], trt_merge[4,4],trt_merge[4,6], trt_merge[4,7] )
+    TIME5 <- dist.pt (trt_merge[5,3], trt_merge[5,4],trt_merge[5,6], trt_merge[5,7] )
+    TIME6 <- dist.pt (trt_merge[6,3], trt_merge[6,4],trt_merge[6,6], trt_merge[6,7] )
+    TIME7 <- dist.pt (trt_merge[7,3], trt_merge[7,4],trt_merge[7,6], trt_merge[7,7] )
+    TIME8 <- dist.pt (trt_merge[8,3], trt_merge[8,4],trt_merge[8,6], trt_merge[8,7] )
+    TIME9 <- dist.pt (trt_merge[9,3], trt_merge[9,4],trt_merge[9,6], trt_merge[9,7] )
+    TIME10 <- dist.pt (trt_merge[10,3], trt_merge[10,4],trt_merge[10,6], trt_merge[10,7] )
+    TIME11 <- dist.pt (trt_merge[11,3], trt_merge[11,4],trt_merge[11,6], trt_merge[11,7] )
+    TIME12 <- dist.pt (trt_merge[12,3], trt_merge[12,4],trt_merge[12,6], trt_merge[12,7] )
+    TIME13 <- dist.pt (trt_merge[13,3], trt_merge[13,4],trt_merge[13,6], trt_merge[13,7] )
+    
+    
+    dist_btwn_plant <- data.frame(i, j, TIME1, TIME2, TIME3, TIME4, TIME5, TIME6, TIME7, TIME8, TIME9, TIME10, TIME11, TIME12, TIME13)
+    dist_btw_trt <-rbind(dist_btw_trt, dist_btwn_plant)
+  }
+}
+
+col_head <- c('Treat1',"Treat2", '1',"2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13")
+colnames(dist_btw_trt) <- col_head
+
+dist_btw_tidy <- dist_btw_trt %>% gather(time, distance, 3:15) %>%
+  mutate(type =rep("centroid"))
+
+sample_days2 <-data.frame(time = 1:13,
+           days=c(1, 4, 6, 11,14, 18, 21, 25, 28, 32, 35, 39,42))
+
+dist_btw_tidy  <- merge(dist_btw_tidy , sample_days2, by = c('time'))
+
+```
+
+Do Man Kendall trend test to evaluate trends between treatments 
+
+```{r man_kendall}
+###################################################################################################
+# trajectory analysis 
+###################################################################################################
+
+#Test analysis 
+plant_mk_cent <- dist_btw_tidy %>% 
+  filter(Treat1== "Epi (-)") %>%
+  filter(Treat2 == "Epi (-) Col (+)") %>%
+  mutate(time = as.numeric(time))%>% arrange(time)
+
+plant_mk_test1 <- mk.test(plant_mk_cent$distance)
+plant_slope <- sens.slope(plant_mk_cent$distance)
+
+
+plant_mk_test1$estimates[3] # extract tau
+plant_mk_test1$p.value # extract pvalue from trend test 
+plant_slope$estimates # extract slope 
+plant_slope$p.value
+
+# okay moving on... conduct pairwise comparisons  
+trt_level_mk_test <- dist_btw_tidy %>% 
+  ungroup()%>%
+  group_by(Treat1, Treat2) %>%  
+  mutate(time = as.numeric(time))%>% 
+  arrange(time) %>%
+  mutate(mann_kendall_tau = mk.test(distance)$estimates[3],
+         mann_kendall_pvalue = mk.test(distance)$p.value,
+         sens_slope = sens.slope(distance)$estimate,
+         sens_pvalue = sens.slope(distance)$p.value) %>%
+  group_by(Treat1, Treat2) %>%
+  summarise_at(c("mann_kendall_tau", "mann_kendall_pvalue", "sens_slope", "sens_pvalue"), mean)
+
+trt_level_mk_test %>% 
+  group_by(Treat1) %>% 
+  summarise(mean_sens = mean(sens_slope))
+```
+
+Generate matrix for convergence results 
+
+```{r graphic_convergence}
+converg_matrix <- trt_level_mk_test %>% 
+  select(.,(1:3)) %>% # arrange(Treat1) %>% arrange(Treat)%>%
+  spread(Treat2, mann_kendall_tau) %>% 
+  replace(., is.na(.), 0)
+
+# Get lower triangle of the correlation matrix
+get_lower_tri<-function(cormat){
+  cormat[upper.tri(cormat)] <- NA
+  return(cormat)
+}
+
+signif <- trt_level_mk_test %>%
+mutate(signif.p = case_when((mann_kendall_pvalue < 0.05) ~ 0, 
+                              (mann_kendall_pvalue > 0.05) ~ 1))%>%
+  select(Treat1, Treat2, mann_kendall_pvalue, signif.p) 
+conv_low <- get_lower_tri(converg_matrix)
+convergence <- conv_low %>% 
+  gather(Treat2, mann_kendall_tau, 2:6) %>%
+  mutate(index = "Bray-Curtis")
+convergence <- merge(convergence, signif, by = c("Treat1", "Treat2"))
+
+#jpeg(filename="convergence_test_centroid_severity.jpeg", width=90, height=90, units="mm", bg="white", res=300)
+mktrend <-convergence%>% 
+  ggplot(aes(x=Treat1, y = Treat2, fill=mann_kendall_tau))+
+  theme_bw(base_size =11.5)+
+  geom_raster(aes(x=Treat1, y = Treat2, fill=mann_kendall_tau))+
+  scale_fill_gradientn(limits = c(-1,1), 
+                       breaks=c(-1,0,1),
+                       colours=c('#bdbdbd','#f1eef6','#045a8d'),
+                       na.value = 'white',
+                       name='Tau')+
+  labs(x="", y="") +
+  geom_text(aes(x=Treat1, y = Treat2, label=round(mann_kendall_tau,2)), size=3, vjust=1)+ 
+  geom_text(data=subset(convergence, mann_kendall_pvalue < 0.05), 
+            aes(x=Treat1, y = Treat2, label="*"), 
+            size=5, color="white", vjust=0.2, hjust=-1)+ 
+  geom_text(data=subset(convergence, mann_kendall_tau < -0.9),
+            aes(x=Treat1, y = Treat2, label=round(mann_kendall_tau,2)),
+            size=5, color="#bdbdbd",  vjust=1)+ 
+ theme(axis.title.x=element_blank(),
+      axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid.major = element_blank(),
+    # panel.border = element_blank(),
+    panel.background = element_blank(),
+    axis.ticks = element_blank(),
+    legend.justification = c(1, 0),
+    legend.position = c(0.5, 0.8),
+    legend.direction = "horizontal")+
+  guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
+                               title.position = "top", title.hjust = 0.5))+
+  scale_y_discrete(labels=c("Epi (+)"    = "Epi",
+                            "Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+                            "Epi (-)"    = "No symbiont",
+                            "Epi (-) Rhiz (+)"   = "Rhiz",
+                            "Epi (-) Col (+)"    ="Col",
+                            "Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+                            "Epi (+) Col (+)" ="Epi + Col",
+                            "Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz"), 
+                   position = 'right'
+  )+
+  guides(fill=FALSE)
+mktrend
+#dev.off()
+
+```
+
+supplemental graphic of pvalues 
+
+```{r graphic convergence_pvalues}
+
+converg_matrix2 <- trt_level_mk_test %>% 
+  select(Treat1, Treat2, mann_kendall_pvalue) %>% # arrange(Treat1) %>% arrange(Treat)%>%
+  spread(Treat2, mann_kendall_pvalue) %>% 
+  replace(., is.na(.), 0)
+
+# Get lower triangle of the correlation matrix
+get_lower_tri<-function(cormat){
+  cormat[upper.tri(cormat)] <- NA
+  return(cormat)
+}
+
+conv_low2 <- get_lower_tri(converg_matrix2)
+convergence_2 <- conv_low2 %>% 
+  gather(Treat2, mann_kendall_pvalue, 2:6) %>%
+  mutate(index = "Bray-Curtis")
+
+#jpeg(filename="convergence_pvalues_centroid_severity.jpeg", width=90, height=90, units="mm", bg="white", res=300)
+convergence_2%>% 
+  ggplot(aes(x=Treat1, y = Treat2, fill=mann_kendall_pvalue))+
+  theme_bw(base_size =8)+
+  geom_raster(aes(x=Treat1, y = Treat2, fill=mann_kendall_pvalue)) +
+  scale_fill_gradientn(limits = c(0,0.68), 
+                       breaks=c(0,0.05,0.06,0.68),
+                       colours=c('#b10026','#ffffcc','#ffffcc', '#ffffcc'),
+                       na.value = 'white',
+                       name='Tau')+
+  labs(x="", y="") +
+  geom_text(aes(x=Treat1, y = Treat2, label=round(mann_kendall_pvalue,2)), size=2, vjust=1)+ 
+  geom_text(data=subset(convergence, mann_kendall_pvalue < 0.05), 
+            aes(x=Treat1, y = Treat2, label="*"), 
+            size=5, color="white", vjust=0.2, hjust=-1)+ 
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid.major = element_blank(),
+    # panel.border = element_blank(),
+    panel.background = element_blank(),
+    axis.ticks = element_blank(),
+    legend.justification = c(1, 0),
+    legend.position = c(0.5, 0.8),
+    legend.direction = "horizontal")+
+  guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
+                               title.position = "top", title.hjust = 0.5))+
+  theme(axis.text.x = element_text( angle=90, hjust = 1, vjust = 0.5)) +
+  scale_x_discrete(labels=c("Epi (+)"    = "Epi",
+                            "Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+                            "Epi (-)"    = "No symbiont",
+                            "Epi (-) Rhiz (+)"   = "Rhiz",
+                            "Epi (-) Col (+)"    ="Col",
+                            "Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+                            "Epi (+) Col (+)" ="Epi + Col",
+                            "Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz")
+  )+
+  scale_y_discrete(labels=c("Epi (+)"    = "Epi",
+                            "Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+                            "Epi (-)"    = "No symbiont",
+                            "Epi (-) Rhiz (+)"   = "Rhiz",
+                            "Epi (-) Col (+)"    ="Col",
+                            "Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+                            "Epi (+) Col (+)" ="Epi + Col",
+                            "Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz"), 
+                   position = 'right'
+  )+
+  guides(fill=FALSE)
+#dev.off()
+
+```
+
+Graphic showing the sens slope
+```{r graphic sens_slope}
+
+converg_matrix3 <- trt_level_mk_test %>% 
+  select(Treat1, Treat2, sens_slope) %>% # arrange(Treat1) %>% arrange(Treat)%>%
+  spread(Treat2, sens_slope) %>% 
+  replace(., is.na(.), 0)
+
+# Get lower triangle of the correlation matrix
+get_lower_tri<-function(cormat){
+  cormat[upper.tri(cormat)] <- NA
+  return(cormat)
+}
+
+conv_low3 <- get_lower_tri(converg_matrix3)
+convergence_3 <- conv_low3 %>% 
+  gather(Treat2, sens_slope, 2:6) %>%
+  mutate(index = "Bray-Curtis")
+
+#jpeg(filename="convergence_senslope_centroid_severity.jpeg", width=90, height=90, units="mm", bg="white", res=300)
+sensslope <-convergence_3%>% 
+  ggplot(aes(x=Treat1, y = Treat2, fill=sens_slope))+
+  theme_bw(base_size =11.5)+
+  geom_raster(aes(x=Treat1, y = Treat2, fill=sens_slope)) +
+  scale_fill_gradientn(limits = c(0,0.006), 
+                       breaks=c(0,0.006),
+                       colours=c('#edf8e9', '#238b45'),
+                       na.value = 'white',
+                       name='Tau')+
+  labs(x="", y="") +
+  geom_text(aes(x=Treat1, y = Treat2, label=round(sens_slope,3)), size=2.75, vjust=1)+ 
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    panel.grid.major = element_blank(),
+    # panel.border = element_blank(),
+    panel.background = element_blank(),
+    axis.ticks = element_blank(),
+    legend.justification = c(1, 0),
+    legend.position = c(0.5, 0.8),
+    legend.direction = "horizontal")+
+  guides(fill = guide_colorbar(barwidth = 7, barheight = 1,
+                               title.position = "top", title.hjust = 0.5))+
+  theme(axis.text.x = element_text( angle=90, hjust = 1, vjust = 0.5)) +
+  scale_x_discrete(labels=c("Epi (+)"    = "Epi",
+                            "Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+                            "Epi (-)"    = "No symbiont",
+                            "Epi (-) Rhiz (+)"   = "Rhiz",
+                            "Epi (-) Col (+)"    ="Col",
+                            "Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+                            "Epi (+) Col (+)" ="Epi + Col",
+                            "Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz")
+  )+
+  scale_y_discrete(labels=c("Epi (+)"    = "Epi",
+                            "Epi (+) Col (+) Rhiz (+)" = "Epi + Col + Rhiz",
+                            "Epi (-)"    = "No symbiont",
+                            "Epi (-) Rhiz (+)"   = "Rhiz",
+                            "Epi (-) Col (+)"    ="Col",
+                            "Epi (+) Rhiz (+)"  = "Epi + Rhiz",
+                            "Epi (+) Col (+)" ="Epi + Col",
+                            "Epi (-) Col (+) Rhiz (+)" = "Col + Rhiz"), 
+                   position = 'right'
+  )+
+  guides(fill=FALSE)
+sensslope
+#dev.off()
+
+```
+
+```{r mktren and sens graphic}
+#jpeg(filename="convergence_graphics_trend_slope.jpeg", width=90, height=180, units="mm", bg="white", res=300)
+ggarrange(mktrend, sensslope, ncol = 1, nrow = 2, 
+          heights = c(1, 1.3),align = "v",
+          labels = 'AUTO')
+#dev.off()
+```
+
+To assess drift within a treatment, I calculated the distance from the centroid for each outplant within a treatment group.   
+
+```{r drift}
+###################################################################################################
+# calculate distance between outplants and their centroid
+dist.pt <- function(x1, y1, x2, y2) sqrt((x2-x1)^2 + (y2-y1)^2) # finds distance between points 
+
+outplant_list <- unique(pcoa12$PLANT_ID)
+parasite_cent <- merge(pcoa12, cent, by =c ("Treat", "Survey.event")) # to do distanced to inoculation treatment centroid
+
+dis_centroid <- data.frame()
+
+for (i in outplant_list){
+
+    plant <- i
+    
+   # trt_merge <- parasite_nmds %>% filter(PLANT_ID == 1) %>% arrange(Survey.event) # check 
+    trt_merge <- parasite_cent %>% 
+      filter  (PLANT_ID== i)%>%
+      arrange(Survey.event)
+    
+    # x, y coordinates for outplant i row 3,4
+    # x, y coordinates for centroid of treattmeant row 6,7
+    
+    TIME1 <- dist.pt (trt_merge[1,3], trt_merge[1,4],trt_merge[1,6], trt_merge[1,7] )
+    TIME2 <- dist.pt (trt_merge[2,3], trt_merge[2,4],trt_merge[2,6], trt_merge[2,7] )
+    TIME3 <- dist.pt (trt_merge[3,3], trt_merge[3,4],trt_merge[3,6], trt_merge[3,7] )
+    TIME4 <- dist.pt (trt_merge[4,3], trt_merge[4,4],trt_merge[4,6], trt_merge[4,7] )
+    TIME5 <- dist.pt (trt_merge[5,3], trt_merge[5,4],trt_merge[5,6], trt_merge[5,7] )
+    TIME6 <- dist.pt (trt_merge[6,3], trt_merge[6,4],trt_merge[6,6], trt_merge[6,7] )
+    TIME7 <- dist.pt (trt_merge[7,3], trt_merge[7,4],trt_merge[7,6], trt_merge[7,7] )
+    TIME8 <- dist.pt (trt_merge[8,3], trt_merge[8,4],trt_merge[8,6], trt_merge[8,7] )
+    TIME9 <- dist.pt (trt_merge[9,3], trt_merge[9,4],trt_merge[9,6], trt_merge[9,7] )
+    TIME10 <- dist.pt (trt_merge[10,3], trt_merge[10,4],trt_merge[10,6], trt_merge[10,7] )
+    TIME11 <- dist.pt (trt_merge[11,3], trt_merge[11,4],trt_merge[11,6], trt_merge[11,7] )
+    TIME12 <- dist.pt (trt_merge[12,3], trt_merge[12,4],trt_merge[12,6], trt_merge[12,7] )
+    TIME13 <- dist.pt (trt_merge[13,3], trt_merge[13,4],trt_merge[13,6], trt_merge[13,7] )
+    
+    
+    dist_btwn_plant <- data.frame(i,
+                                 # trt_merge$Treat, 
+                                  TIME1, TIME2, TIME3, TIME4, TIME5, TIME6, TIME7, 
+                                  TIME8, TIME9, TIME10, TIME11, TIME12, TIME13)
+    dis_centroid <-rbind(dis_centroid, dist_btwn_plant)
+
+}
+
+col_head <- c('PLANT_ID',
+              '1',"2", "3", "4", "5", "6", "7",
+              "8", "9", "10", "11", "12", "13")
+colnames(dis_centroid) <- col_head
+
+distance_centroid <- dis_centroid %>%
+  group_by(PLANT_ID) %>%
+  summarise_all(mean) %>%
+  gather(time, Distance,2:14)%>%
+  drop_na()
+```
+
+
+```{r distance_from_centroid}
+distance_centroid <- merge(distance_centroid, sample_days2, by = c("time"))
+distance_centroid <- merge(distance_centroid, leafdemographics, by =c("PLANT_ID", "days"))
+```
+Segmented model for drift analysis 
+
+Makes Figure 6
+
+```{r segmented model}
+library(segmented)
+library(nlme)
+
+#mixed effect model
+cent.model <-lme(log10(Distance+1) ~ days, random=~1|PLANT_ID, data= distance_centroid) #random intercept
+
+summary(cent.model)
+
+#segmented model 
+cent.seg <-segmented(cent.model, seg.Z = ~days, npsi = 1)
+summary(cent.seg)
+slope(cent.seg,  .coef=fixef(cent.seg))
+
+#at what day does the slope change? 
+confint.segmented(cent.seg, "days", .coef=fixef(cent.seg))
+cent.seg$coefficients$fixed
+
+
+#plot results 
+mean_dis <-distance_centroid %>% 
+  ungroup()%>%
+  group_by(time, days)%>%
+  summarise(mean_distance = mean(log10(Distance+1)))
+
+#jpeg(filename="Figure6.jpeg", width=120, height=90, units="mm", bg="white", res=300)
+par(mar = c(4, 4, 1, 1)) # Set the margin on all sides to 2
+plot.segmented(cent.seg, "days", .coef=fixef(cent.seg), col='black', rug=TRUE, #dens.rug = TRUE,
+               #shade=TRUE,
+               lwd=2, conf.level=.95,xlab="days",
+               ylab="log distance to the centroid")
+points(x=mean_dis$days, y=mean_dis$mean_distance, cex=1.25)
+#dev.off()
+
+
+cent.fit <-cent.seg$fitted
+model.cent <- data.frame(days = distance_centroid$days,
+                         fitted = cent.fit)
+out.cent <-data.frame(cent.seg$model)
+
+```
